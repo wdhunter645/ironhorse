@@ -1,8 +1,8 @@
 # Setup Report - ironhorse Phase-1
 
 **Date:** 2025-09-16  
-**Setup By:** Codex Agent (Branch A)  
-**Project:** ironhorse - Lou Gehrig Fan Club Phase-1 (Version A)
+**Setup By:** Codex Agent  
+**Project:** ironhorse - Lou Gehrig Fan Club Phase-1
 
 ---
 
