@@ -19,6 +19,11 @@ fi
 echo "Installing postgresql-client..."
 sudo apt-get install -y postgresql-client || echo 'postgresql-client package not found.'
 
+echo "Installing jq..."
+if ! command -v jq &> /dev/null; then
+  sudo apt-get install -y jq || echo 'jq package not found.'
+fi
+
 # Ensure npm registry is public
 echo "Setting npm registry to public..."
 npm config set registry https://registry.npmjs.org/
