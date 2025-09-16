@@ -32,7 +32,15 @@ fi
 # Install Supabase CLI
 if ! command -v supabase &> /dev/null; then
   echo "Installing Supabase CLI..."
-  npm install -g supabase
+  # Use GitHub releases instead of npm (npm global install no longer supported)
+  TEMP_DIR=$(mktemp -d)
+  cd "$TEMP_DIR"
+  wget -q https://github.com/supabase/cli/releases/latest/download/supabase_linux_amd64.tar.gz
+  tar -xzf supabase_linux_amd64.tar.gz
+  sudo mv supabase /usr/local/bin/
+  chmod +x /usr/local/bin/supabase
+  cd - > /dev/null
+  rm -rf "$TEMP_DIR"
 fi
 
 echo "All prerequisites attempted. Please rerun your setup scripts if no errors above."
