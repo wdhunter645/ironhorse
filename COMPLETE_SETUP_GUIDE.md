@@ -24,7 +24,7 @@ The application requires database tables to be created in your Supabase Cloud in
 
 1. **Open Supabase Dashboard**
    - Go to [app.supabase.com](https://app.supabase.com)
-   - Open your project: `lolfycmpjhbdyeyrwnbv.supabase.co`
+   - Open your project dashboard
 
 2. **Create Tables**
    - Navigate to **SQL Editor**
@@ -58,7 +58,7 @@ node scripts/setup_db_manual.js
 cp env.sample .env.local
 
 # Edit .env.local with your Supabase credentials:
-# NEXT_PUBLIC_SUPABASE_URL=https://lolfycmpjhbdyeyrwnbv.supabase.co
+# NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 # NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 ```
 

@@ -6,7 +6,7 @@ The fastest way to set up the database schema is through the Supabase Dashboard:
 
 ### 1. Access Your Supabase Project
 - Go to [app.supabase.com](https://app.supabase.com)
-- Open your project: [lolfycmpjhbdyeyrwnbv.supabase.co](https://lolfycmpjhbdyeyrwnbv.supabase.co)
+- Open your project dashboard
 
 ### 2. Create Database Tables
 - Navigate to **SQL Editor** in the left sidebar
