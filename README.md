@@ -45,25 +45,85 @@ make validate-supabase
 
 #### Local Development
 
-1. Start the local Supabase stack:
+1. **Start the local Supabase stack:**
 ```bash
 npx supabase start
 ```
 
-2. Apply database migrations:
-```bash
-npx supabase db reset
-```
+This will:
+- Pull and start Docker containers for Postgres, PostgREST, GoTrue, and other services
+- Apply all migrations from `supabase/migrations/`
+- Seed the database with data from `supabase/seed.sql`
+- Start the Supabase Studio interface
 
-3. Check the status:
+2. **Check the status:**
 ```bash
 npx supabase status
 ```
 
+3. **Reset database (if needed):**
+```bash
+npx supabase db reset
+```
+
 The local Supabase stack will be available at:
-- API URL: http://127.0.0.1:54321
-- Studio URL: http://127.0.0.1:54323
-- Database URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+- **API URL:** http://127.0.0.1:54321
+- **Studio URL:** http://127.0.0.1:54323 (Database management interface)
+- **Database URL:** postgresql://postgres:postgres@127.0.0.1:54322/postgres
+- **Inbucket URL:** http://127.0.0.1:54324 (Email testing)
+
+#### Managing Migrations
+
+The project includes the following database schema:
+
+- **`quotes`** - Lou Gehrig quotes and sayings
+  - `id` (UUID, primary key)
+  - `text` (text, not null)
+  - `author` (text, default 'Lou Gehrig')
+  - `created_at` (timestamptz)
+
+- **`media_assets`** - Images and media files with metadata
+  - `id` (UUID, primary key)
+  - `filename` (text)
+  - `url` (text)
+  - `width`, `height` (integer)
+  - `orientation` (text)
+  - `tags` (text array)
+  - `status` (text, default 'approved')
+  - `created_at` (timestamptz)
+
+To create new migrations:
+```bash
+npx supabase migration new <migration_name>
+```
+
+To apply pending migrations:
+```bash
+npx supabase db reset
+```
+
+#### Environment Configuration
+
+For local development, your `.env.local` should use the local stack:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+```
+
+#### Troubleshooting
+
+**Docker Issues:**
+- If containers fail to start, try: `npx supabase stop && npx supabase start`
+- On rate limit errors, wait a few minutes and retry
+- Ensure Docker is running and has sufficient resources
+
+**Port Conflicts:**
+- Default ports: 54321 (API), 54322 (DB), 54323 (Studio), 54324 (Inbucket)
+- If ports are in use, modify `supabase/config.toml`
+
+**Database Connection:**
+- Verify tables exist: `npx supabase status` should show "Started"
+- Check logs: `docker logs supabase_db_ironhorse`
 
 #### Production Setup
 
@@ -86,10 +146,17 @@ The application includes the following tables:
 
 ### Available Scripts
 
+**Development:**
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+
+**Supabase:**
+- `npm run supabase:start` - Start local Supabase stack
+- `npm run supabase:stop` - Stop local Supabase stack
+- `npm run supabase:status` - Check Supabase service status
+- `npm run supabase:reset` - Reset database with migrations and seed data
 
 ### Project Structure
 
