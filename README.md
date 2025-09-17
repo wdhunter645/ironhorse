@@ -1,183 +1,132 @@
-# Supabase CLI
+# IronHorse - Lou Gehrig Fan Club
 
-[![Coverage Status](https://coveralls.io/repos/github/supabase/cli/badge.svg?branch=main)](https://coveralls.io/github/supabase/cli?branch=main) [![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/supabase-cli/setup-cli/master?style=flat-square&label=Bitbucket%20Canary)](https://bitbucket.org/supabase-cli/setup-cli/pipelines) [![Gitlab Pipeline Status](https://img.shields.io/gitlab/pipeline-status/sweatybridge%2Fsetup-cli?label=Gitlab%20Canary)
-](https://gitlab.com/sweatybridge/setup-cli/-/pipelines)
+A Next.js application for the Lou Gehrig Fan Club with Supabase backend.
 
-[Supabase](https://supabase.io) is an open source Firebase alternative. We're building the features of Firebase using enterprise-grade open source tools.
+## Getting Started
 
-This repository contains all the functionality for Supabase CLI.
+### Prerequisites
 
-- [x] Running Supabase locally
-- [x] Managing database migrations
-- [x] Creating and deploying Supabase Functions
-- [x] Generating types directly from your database schema
-- [x] Making authenticated HTTP requests to [Management API](https://supabase.com/docs/reference/api/introduction)
+Ensure you have the following installed:
+- Node.js (version 18 or higher)
+- npm or yarn
+- Docker (for local Supabase development)
 
-## Getting started
+### Installation
 
-### Install the CLI
-
-Available via [NPM](https://www.npmjs.com) as dev dependency. To install:
-
+1. Clone the repository:
 ```bash
-npm i supabase --save-dev
+git clone <repository-url>
+cd ironhorse
 ```
 
-To install the beta release channel:
-
+2. Install dependencies:
 ```bash
-npm i supabase@beta --save-dev
+npm install
 ```
 
-When installing with yarn 4, you need to disable experimental fetch with the following nodejs config.
-
-```
-NODE_OPTIONS=--no-experimental-fetch yarn add supabase
-```
-
-> **Note**
-For Bun versions below v1.0.17, you must add `supabase` as a [trusted dependency](https://bun.sh/guides/install/trusted) before running `bun add -D supabase`.
-
-<details>
-  <summary><b>macOS</b></summary>
-
-  Available via [Homebrew](https://brew.sh). To install:
-
-  ```sh
-  brew install supabase/tap/supabase
-  ```
-
-  To install the beta release channel:
-  
-  ```sh
-  brew install supabase/tap/supabase-beta
-  brew link --overwrite supabase-beta
-  ```
-  
-  To upgrade:
-
-  ```sh
-  brew upgrade supabase
-  ```
-</details>
-
-<details>
-  <summary><b>Windows</b></summary>
-
-  Available via [Scoop](https://scoop.sh). To install:
-
-  ```powershell
-  scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
-  scoop install supabase
-  ```
-
-  To upgrade:
-
-  ```powershell
-  scoop update supabase
-  ```
-</details>
-
-<details>
-  <summary><b>Linux</b></summary>
-
-  Available via [Homebrew](https://brew.sh) and Linux packages.
-
-  #### via Homebrew
-
-  To install:
-
-  ```sh
-  brew install supabase/tap/supabase
-  ```
-
-  To upgrade:
-
-  ```sh
-  brew upgrade supabase
-  ```
-
-  #### via Linux packages
-
-  Linux packages are provided in [Releases](https://github.com/supabase/cli/releases). To install, download the `.apk`/`.deb`/`.rpm`/`.pkg.tar.zst` file depending on your package manager and run the respective commands.
-
-  ```sh
-  sudo apk add --allow-untrusted <...>.apk
-  ```
-
-  ```sh
-  sudo dpkg -i <...>.deb
-  ```
-
-  ```sh
-  sudo rpm -i <...>.rpm
-  ```
-
-  ```sh
-  sudo pacman -U <...>.pkg.tar.zst
-  ```
-</details>
-
-<details>
-  <summary><b>Other Platforms</b></summary>
-
-  You can also install the CLI via [go modules](https://go.dev/ref/mod#go-install) without the help of package managers.
-
-  ```sh
-  go install github.com/supabase/cli@latest
-  ```
-
-  Add a symlink to the binary in `$PATH` for easier access:
-
-  ```sh
-  ln -s "$(go env GOPATH)/bin/cli" /usr/bin/supabase
-  ```
-
-  This works on other non-standard Linux distros.
-</details>
-
-<details>
-  <summary><b>Community Maintained Packages</b></summary>
-
-  Available via [pkgx](https://pkgx.sh/). Package script [here](https://github.com/pkgxdev/pantry/blob/main/projects/supabase.com/cli/package.yml).
-  To install in your working directory:
-
-  ```bash
-  pkgx install supabase
-  ```
-
-  Available via [Nixpkgs](https://nixos.org/). Package script [here](https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/tools/supabase-cli/default.nix).
-</details>
-
-### Run the CLI
-
+3. Set up environment variables:
 ```bash
-supabase bootstrap
+cp env.sample .env.local
+# Edit .env.local with your actual values
 ```
 
-Or using npx:
+### Supabase Setup
 
+This project uses Supabase for the backend. The Supabase CLI is already configured as a dev dependency.
+
+#### Quick Validation
+
+To validate your Supabase setup:
 ```bash
-npx supabase bootstrap
+make validate-supabase
+# OR
+./scripts/validate_supabase_setup.sh
 ```
 
-The bootstrap command will guide you through the process of setting up a Supabase project using one of the [starter](https://github.com/supabase-community/supabase-samples/blob/main/samples.json) templates.
+#### Local Development
 
-## Docs
-
-Command & config reference can be found [here](https://supabase.com/docs/reference/cli/about).
-
-## Breaking changes
-
-We follow semantic versioning for changes that directly impact CLI commands, flags, and configurations.
-
-However, due to dependencies on other service images, we cannot guarantee that schema migrations, seed.sql, and generated types will always work for the same CLI major version. If you need such guarantees, we encourage you to pin a specific version of CLI in package.json.
-
-## Developing
-
-To run from source:
-
-```sh
-# Go >= 1.22
-go run . help
+1. Start the local Supabase stack:
+```bash
+npx supabase start
 ```
+
+2. Apply database migrations:
+```bash
+npx supabase db reset
+```
+
+3. Check the status:
+```bash
+npx supabase status
+```
+
+The local Supabase stack will be available at:
+- API URL: http://127.0.0.1:54321
+- Studio URL: http://127.0.0.1:54323
+- Database URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+
+#### Production Setup
+
+For production deployment, follow the setup instructions in `SETUP_INSTRUCTIONS.md`.
+
+### Development
+
+1. Start the development server:
+```bash
+npm run dev
+```
+
+2. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Database Schema
+
+The application includes the following tables:
+- `quotes` - Lou Gehrig quotes and sayings
+- `media_assets` - Images and media files with metadata
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Project Structure
+
+```
+ironhorse/
+├── app/                    # Next.js 13+ app directory
+├── public/                 # Static files
+├── scripts/               # Setup and deployment scripts
+├── sql/                   # Database schemas and policies
+├── supabase/              # Supabase configuration
+│   ├── config.toml        # Local development config
+│   └── .gitignore         # Supabase-specific gitignore
+├── .env.local             # Environment variables (local)
+├── env.sample             # Environment variables template
+└── package.json           # Dependencies and scripts
+```
+
+### Environment Variables
+
+Required environment variables (see `env.sample`):
+
+- `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anon key
+- `SUPABASE_SERVICE_ROLE_KEY` - Your Supabase service role key (server-side only)
+- `NEXT_PUBLIC_B2_ENDPOINT` - Backblaze B2 endpoint
+- `NEXT_PUBLIC_B2_BUCKET` - Backblaze B2 bucket name
+- `B2_KEY_ID` - Backblaze B2 key ID
+- `B2_APP_KEY` - Backblaze B2 application key
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test your changes
+5. Submit a pull request
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
