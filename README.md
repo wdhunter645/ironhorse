@@ -17,8 +17,8 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
 1. **Create a Supabase project** at [app.supabase.com](https://app.supabase.com).
 2. **Apply the database schema** using the Supabase SQL Editor (see `DATABASE_SETUP.md` for detailed instructions).
 3. **Copy your project credentials** (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`) from your Supabase dashboard.
-4. **For production deployment**: Add all required environment variables to your repository secrets for CI/CD.
-5. **For local development**: Copy credentials to `.env.local` (see `env.sample` for the template).
+4. **Store credentials as GitHub repository secrets** (recommended for all deployments).
+5. **Optionally for local development**: Copy credentials to `.env.local` (see `env.sample` for the template).
 
 ### Installing & Running
 
@@ -39,6 +39,7 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
 4. **Configure environment variables:**
    
    **For Production (Recommended):**
+   Store credentials as GitHub repository secrets:
    ```bash
    bash scripts/set_repo_secrets.sh
    ```
@@ -72,7 +73,11 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
 
 ### Environment Variables
 
-See `env.sample` for all required variables.
+**GitHub Repository Secrets (Recommended):**
+All production deployments should use GitHub repository secrets. See `scripts/set_repo_secrets.sh` for automated setup.
+
+**Local Development (.env.local):**
+For local development only, see `env.sample` for required variables template.
 
 ### Production Deployment (GitHub Secrets)
 

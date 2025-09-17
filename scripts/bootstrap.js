@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
-// Load environment variables
+// Load environment variables - prioritize GitHub secrets over .env.local
 require('dotenv').config({ path: '.env.local' });
 
 const colors = {
@@ -188,13 +188,17 @@ function printSetupInstructions() {
   log('   • Run the seed data from: sql/supabase_cloud_seed.sql');
   log('   • See DATABASE_SETUP.md for detailed instructions\n');
   
-  log('2. Environment Variables:', 'yellow');
-  log('   • Copy env.sample to .env.local');
-  log('   • Fill in your Supabase credentials from the dashboard');
-  log('   • For production, use GitHub repository secrets\n');
+  log('2. Environment Variables (Production - Recommended):', 'yellow');
+  log('   • Set GitHub repository secrets: bash scripts/set_repo_secrets.sh');
+  log('   • This is the recommended approach for all deployments\n');
   
-  log('3. Verification:', 'yellow');
-  log('   • Run: npm run dev');
+  log('3. Environment Variables (Local Development - Optional):', 'yellow');
+  log('   • Copy env.sample to .env.local');
+  log('   • Fill in your Supabase credentials from the dashboard\n');
+  
+  log('4. Verification:', 'yellow');
+  log('   • Deploy to production: vercel --prod');
+  log('   • Or for local testing: npm run dev');
   log('   • Visit: your-dev-server/test-supabase');
   log('   • Check: your-dev-server/api/quotes/weekly\n');
 }
@@ -206,10 +210,10 @@ function printSuccessMessage() {
   logSuccess('Supabase connection is working');
   
   log('\nNext steps:', 'cyan');
-  log('• Start development: npm run dev');
+  log('• Deploy to production: vercel --prod (with GitHub secrets)');
+  log('• Or test locally: npm run dev');
   log('• Test the app in your browser at the dev server URL');
   log('• View connectivity: /test-supabase endpoint');
-  log('• Deploy to production: vercel --prod');
 }
 
 async function main() {

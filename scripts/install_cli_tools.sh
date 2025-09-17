@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Script to check and install Vercel and GitHub CLI
-# Note: This project uses Supabase Cloud only - no local Supabase CLI required
+# Script to check and install Vercel and GitHub CLI for Supabase Cloud deployment
 
 set -e
 
@@ -30,7 +29,7 @@ else
   echo "GitHub CLI already installed: $(gh --version | head -n1)"
 fi
 
-echo "Essential CLI tools are installed and ready!"
+echo "All CLI tools are installed and ready!"
 echo ""
-echo "Note: This project uses Supabase Cloud only."
-echo "No local Supabase CLI installation is required or recommended."
+echo "Note: Supabase CLI is not required for this project."
+echo "This project uses Supabase Cloud exclusively with GitHub repository secrets."

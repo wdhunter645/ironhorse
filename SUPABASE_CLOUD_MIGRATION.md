@@ -14,6 +14,14 @@ To fully test the implementation:
 3. Get your project credentials from Settings > API
 
 ### 2. Update Environment Variables
+
+**Production (Recommended):**
+Set GitHub repository secrets:
+```bash
+bash scripts/set_repo_secrets.sh
+```
+
+**Local Development (Optional):**
 Update `.env.local` with your actual Supabase Cloud credentials:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
@@ -30,6 +38,13 @@ bash scripts/db_apply.sh
 ```
 
 ### 4. Test Connectivity
+
+**Production Deployment:**
+```bash
+vercel --prod
+```
+
+**Local Development (Optional):**
 1. Start the development server:
    ```bash
    npm run dev
@@ -51,7 +66,7 @@ bash scripts/db_apply.sh
 - ✅ **App runs** with fallback quotes when Supabase credentials are invalid
 - ✅ **Test page shows connectivity status** and database contents
 - ✅ **API returns quotes from Supabase** when properly configured
-- ✅ **No local Supabase CLI required**
+- ✅ **No local Supabase CLI required** - Uses cloud exclusively via GitHub secrets
 
 ## Files Modified
 
