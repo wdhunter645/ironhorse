@@ -33,29 +33,45 @@ else
     exit 1
 fi
 
-# Check environment file
-if [ -f ".env.local" ]; then
-    echo "✅ Environment file (.env.local) exists"
-    if grep -q "NEXT_PUBLIC_SUPABASE_URL" .env.local; then
-        echo "✅ Supabase URL configuration found"
+# Check for environment configuration
+echo ""
+echo "🔍 Environment Configuration Check:"
+
+# Check if GitHub CLI is available for secrets
+if command -v gh &> /dev/null; then
+    echo "✅ GitHub CLI available for repository secrets"
+    if gh auth status &> /dev/null; then
+        echo "✅ GitHub CLI authenticated"
+        echo "ℹ️  You can set repository secrets with: bash scripts/set_repo_secrets.sh"
     else
-        echo "⚠️  Supabase URL not configured in .env.local"
-    fi
-    if grep -q "NEXT_PUBLIC_SUPABASE_ANON_KEY" .env.local; then
-        echo "✅ Supabase anon key configuration found"
-    else
-        echo "⚠️  Supabase anon key not configured in .env.local"
+        echo "⚠️  GitHub CLI not authenticated - run: gh auth login"
     fi
 else
-    echo "⚠️  Environment file (.env.local) missing - copy from env.sample"
+    echo "⚠️  GitHub CLI not found - install for repository secrets management"
+fi
+
+# Check for local development environment (optional)
+if [ -f ".env.local" ]; then
+    echo "✅ Local environment file (.env.local) exists"
+    if grep -q "NEXT_PUBLIC_SUPABASE_URL" .env.local && grep -q "NEXT_PUBLIC_SUPABASE_ANON_KEY" .env.local; then
+        echo "✅ Local Supabase configuration found"
+    else
+        echo "⚠️  Incomplete Supabase configuration in .env.local"
+    fi
+else
+    echo "ℹ️  No .env.local found (using GitHub secrets for production)"
 fi
 
 echo ""
 echo "🎉 Supabase Cloud setup validation complete!"
 echo ""
-echo "Next steps:"
-echo "1. Configure your .env.local file with Supabase Cloud credentials"
-echo "2. Apply database schema: bash scripts/db_apply.sh (with DATABASE_URL set)"
-echo "3. Start app: npm run dev"
+echo "Recommended next steps:"
+echo "1. Set GitHub repository secrets: bash scripts/set_repo_secrets.sh"
+echo "2. Apply database schema using Supabase dashboard SQL Editor (see DATABASE_SETUP.md)"
+echo "3. Deploy to production: vercel --prod"
 echo ""
-echo "Note: This project uses Supabase Cloud only - no local CLI required"
+echo "For local development (optional):"
+echo "1. Copy env.sample to .env.local and fill in credentials"
+echo "2. Start app: npm run dev"
+echo ""
+echo "📋 This project uses Supabase Cloud exclusively via GitHub repository secrets"
