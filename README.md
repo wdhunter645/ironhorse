@@ -34,6 +34,15 @@ cp env.sample .env.local
 
 This project uses Supabase for the backend. The Supabase CLI is already configured as a dev dependency.
 
+#### Quick Validation
+
+To validate your Supabase setup:
+```bash
+make validate-supabase
+# OR
+./scripts/validate_supabase_setup.sh
+```
+
 #### Local Development
 
 1. Start the local Supabase stack:

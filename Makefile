@@ -5,3 +5,4 @@ repo-secrets: ; bash scripts/set_repo_secrets.sh
 vercel-env: ; bash scripts/set_vercel_env.sh
 smoke: ; bash scripts/health_smoke.sh
 verify-cli: ; bash scripts/verify_cli_tools.sh
+validate-supabase: ; bash scripts/validate_supabase_setup.sh
