@@ -5,13 +5,14 @@
 Before running the setup scripts, ensure you have:
 
 1. **Node.js**: Version 18 or higher
-2. **Supabase Account**: Create account at https://supabase.com (Cloud only)
-3. **Vercel Account**: Create account at https://vercel.com
-4. **B2 Storage Account**: Create account at Backblaze B2
-5. **GitHub CLI**: Install and authenticate `gh` CLI tool
-6. **Vercel CLI**: Install and authenticate `vercel` CLI tool
+2. **Docker**: For local Supabase development stack
+3. **Supabase Account**: Create account at https://supabase.com
+4. **Vercel Account**: Create account at https://vercel.com
+5. **B2 Storage Account**: Create account at Backblaze B2
+6. **GitHub CLI**: Install and authenticate `gh` CLI tool
+7. **Vercel CLI**: Install and authenticate `vercel` CLI tool
 
-**Note**: This project uses **Supabase Cloud only**—no local Supabase CLI or Docker required.
+**Note**: Supabase CLI is now included as a dev dependency in the project and doesn't need separate installation.
 
 ### Installing CLI Tools
 
@@ -29,41 +30,56 @@ bash scripts/verify_cli_tools.sh
 make verify-cli
 ```
 
-## Supabase Cloud Setup
+## Local Development Setup
 
-### 1. Create Supabase Project
-
-1. Go to [app.supabase.com](https://app.supabase.com) and create a new project
-2. Copy your project credentials from the dashboard:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` 
-   - `SUPABASE_SERVICE_ROLE_KEY`
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Environment Variables Setup
+### 2. Environment Variables Setup
 
-Copy the environment template and fill in your Supabase Cloud and B2 credentials:
+Copy the environment template and fill in the required values:
 
 ```bash
 cp env.sample .env.local
-# Edit .env.local with your Supabase Cloud and B2 credentials
+# Edit .env.local with your actual values
 ```
+
+### 3. Start Local Supabase Stack
+
+```bash
+npm run supabase:start
+# OR
+npx supabase start
+```
+
+This will start the local Supabase services:
+- API: http://127.0.0.1:54321
+- Studio: http://127.0.0.1:54323
+- Database: postgresql://postgres:postgres@127.0.0.1:54322/postgres
 
 ### 4. Apply Database Schema
 
-Apply the SQL migration files in `sql/` directly to your Supabase Cloud project using:
-- The Supabase SQL editor in your dashboard, OR  
-- The Supabase CLI pointed at your cloud project: `npx supabase db push`
+```bash
+npm run supabase:reset
+# OR
+npx supabase db reset
+```
 
 ### 5. Start Development Server
 
 ```bash
 npm run dev
+```
+
+### 6. Check Local Status
+
+```bash
+npm run supabase:status
+# OR
+npx supabase status
 ```
 
 ## Setup Script Execution Order

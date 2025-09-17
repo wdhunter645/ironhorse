@@ -1,8 +1,8 @@
 #!/bin/bash
-# Quick setup validation script for ironhorse project
+# Quick setup validation script for ironhorse project (Supabase Cloud only)
 
-echo "🔍 Validating ironhorse Supabase setup..."
-echo "=================================="
+echo "🔍 Validating ironhorse Supabase Cloud setup..."
+echo "=============================================="
 
 # Check if we're in the right directory
 if [ ! -f "package.json" ]; then
@@ -11,52 +11,25 @@ if [ ! -f "package.json" ]; then
 fi
 
 # Check package.json has supabase dependency
-if grep -q '"supabase"' package.json; then
-    echo "✅ Supabase CLI dependency found in package.json"
+if grep -q '"@supabase/supabase-js"' package.json; then
+    echo "✅ Supabase JS client found in package.json"
 else
-    echo "❌ Supabase CLI dependency missing from package.json"
+    echo "❌ Supabase JS client missing from package.json"
     exit 1
 fi
 
-# Check supabase directory exists
-if [ -d "supabase" ]; then
-    echo "✅ Supabase configuration directory exists"
+# Check SQL directory exists with Cloud migration files
+if [ -d "sql" ]; then
+    echo "✅ SQL directory exists"
+    if [ -f "sql/supabase_cloud_migration.sql" ]; then
+        echo "✅ Cloud migration file found"
+    elif [ -f "sql/supabase_bootstrap.sql" ]; then
+        echo "✅ Bootstrap SQL file found"
+    else
+        echo "⚠️  No SQL migration files found in sql/ directory"
+    fi
 else
-    echo "❌ Supabase configuration directory missing"
-    exit 1
-fi
-
-# Check config.toml exists
-if [ -f "supabase/config.toml" ]; then
-    echo "✅ Supabase config.toml found"
-else
-    echo "❌ Supabase config.toml missing"
-    exit 1
-fi
-
-# Check migrations directory
-if [ -d "supabase/migrations" ]; then
-    migration_count=$(ls supabase/migrations/*.sql 2>/dev/null | wc -l)
-    echo "✅ Migrations directory found ($migration_count migration files)"
-else
-    echo "❌ Migrations directory missing"
-    exit 1
-fi
-
-# Check seed file
-if [ -f "supabase/seed.sql" ]; then
-    echo "✅ Seed file found"
-else
-    echo "❌ Seed file missing"
-    exit 1
-fi
-
-# Check if CLI is working
-if npx supabase --version > /dev/null 2>&1; then
-    CLI_VERSION=$(npx supabase --version)
-    echo "✅ Supabase CLI working (version: $CLI_VERSION)"
-else
-    echo "❌ Supabase CLI not working"
+    echo "❌ SQL directory missing"
     exit 1
 fi
 
@@ -68,15 +41,21 @@ if [ -f ".env.local" ]; then
     else
         echo "⚠️  Supabase URL not configured in .env.local"
     fi
+    if grep -q "NEXT_PUBLIC_SUPABASE_ANON_KEY" .env.local; then
+        echo "✅ Supabase anon key configuration found"
+    else
+        echo "⚠️  Supabase anon key not configured in .env.local"
+    fi
 else
     echo "⚠️  Environment file (.env.local) missing - copy from env.sample"
 fi
 
 echo ""
-echo "🎉 Supabase setup validation complete!"
+echo "🎉 Supabase Cloud setup validation complete!"
 echo ""
 echo "Next steps:"
-echo "1. Configure your .env.local file with actual values"
-echo "2. Start local development: npm run supabase:start"
-echo "3. Reset database: npm run supabase:reset"
-echo "4. Start app: npm run dev"
+echo "1. Configure your .env.local file with Supabase Cloud credentials"
+echo "2. Apply database schema: bash scripts/db_apply.sh (with DATABASE_URL set)"
+echo "3. Start app: npm run dev"
+echo ""
+echo "Note: This project uses Supabase Cloud only - no local CLI required"
