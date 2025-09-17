@@ -1,0 +1,22 @@
+-- Create tables for Lou Gehrig Fan Club
+
+-- Quotes table for storing Lou Gehrig quotes and sayings
+create table if not exists quotes (
+    id uuid primary key default gen_random_uuid(),
+    text text not null,
+    author text default 'Lou Gehrig',
+    created_at timestamptz default now()
+);
+
+-- Media assets table for storing images and other media
+create table if not exists media_assets (
+    id uuid primary key default gen_random_uuid(),
+    filename text,
+    url text,
+    width int,
+    height int,
+    orientation text,
+    tags text[] default '{}',
+    status text default 'approved',
+    created_at timestamptz default now()
+);
