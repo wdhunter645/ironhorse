@@ -40,3 +40,6 @@ temp/
 
 # Vercel
 .vercel
+
+# TypeScript build info
+*.tsbuildinfo
