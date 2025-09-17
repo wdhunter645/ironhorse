@@ -1,7 +1,15 @@
-import { createClient } from '@supabase/supabase-js'
+// Standalone website - no external database connections
+// This is a placeholder to maintain compatibility with existing code
 
-// Fallback values for build-time when environment variables may not be available
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = {
+  from: () => ({
+    select: () => ({
+      order: () => ({
+        then: () => Promise.resolve({ data: [], error: { message: 'No database configured - standalone mode' } })
+      })
+    }),
+    limit: () => ({
+      then: () => Promise.resolve({ data: [], error: { message: 'No database configured - standalone mode' } })
+    })
+  })
+}

@@ -6,17 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  # Supabase Cloud Configuration
-  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-  
-  # B2 Storage Configuration  
-  NEXT_PUBLIC_B2_ENDPOINT: ${{ secrets.NEXT_PUBLIC_B2_ENDPOINT }}
-  NEXT_PUBLIC_B2_BUCKET: ${{ secrets.NEXT_PUBLIC_B2_BUCKET }}
-  B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
-  B2_APP_KEY: ${{ secrets.B2_APP_KEY }}
+# No external service configurations needed for standalone website
 
 jobs:
   build-and-test:
@@ -38,48 +28,9 @@ jobs:
     - name: Run linter
       run: npm run lint
       
-    - name: Apply database schema to Supabase Cloud
-      run: |
-        # Apply database schema using the db_apply script
-        export DATABASE_URL="postgresql://postgres:${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}@db.lolfycmpjhbdyeyrwnbv.supabase.co:5432/postgres"
-        bash scripts/db_apply.sh
-      if: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
-      
-    - name: Validate database schema
-      run: |
-        # Test database connection and verify tables exist
-        node scripts/validate_database.js
-      env:
-        NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        
-    - name: Validate setup
-      run: npm run bootstrap
-      
     - name: Build application
       run: npm run build
       
-    - name: Test API endpoints
-      run: |
-        npm run start &
-        SERVER_PID=$!
-        sleep 5
-        
-        # Test quotes API
-        RESPONSE=$(curl -s http://localhost:3000/api/quotes/weekly)
-        echo "API Response: $RESPONSE"
-        
-        # Validate response format
-        if echo "$RESPONSE" | grep -q '"quote"' && echo "$RESPONSE" | grep -q '"source"'; then
-          echo "✅ API response format is valid"
-        else
-          echo "❌ API response format is invalid"
-          exit 1
-        fi
-        
-        kill $SERVER_PID
-        
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
