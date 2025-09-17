@@ -199,8 +199,6 @@ function printSetupInstructions() {
   log('4. Verification:', 'yellow');
   log('   • Deploy to production: vercel --prod');
   log('   • Or for local testing: npm run dev');
-  log('   • Visit: your-dev-server/test-supabase');
-  log('   • Check: your-dev-server/api/quotes/weekly\n');
 }
 
 function printSuccessMessage() {
@@ -212,8 +210,6 @@ function printSuccessMessage() {
   log('\nNext steps:', 'cyan');
   log('• Deploy to production: vercel --prod (with GitHub secrets)');
   log('• Or test locally: npm run dev');
-  log('• Test the app in your browser at the dev server URL');
-  log('• View connectivity: /test-supabase endpoint');
 }
 
 async function main() {
