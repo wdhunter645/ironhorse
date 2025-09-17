@@ -19,7 +19,9 @@ create table if not exists media_assets (
     tags text[] default '{}',
     status text default 'approved',
     created_at timestamptz default now()
-);-- Enable Row Level Security and create policies
+);
+
+-- Enable Row Level Security and create policies
 
 -- Enable RLS on all tables
 alter table quotes enable row level security;
