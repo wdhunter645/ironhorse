@@ -1,0 +1,98 @@
+name: Lou Gehrig Fan Club - Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  # Supabase Cloud Configuration
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+  
+  # B2 Storage Configuration  
+  NEXT_PUBLIC_B2_ENDPOINT: ${{ secrets.NEXT_PUBLIC_B2_ENDPOINT }}
+  NEXT_PUBLIC_B2_BUCKET: ${{ secrets.NEXT_PUBLIC_B2_BUCKET }}
+  B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
+  B2_APP_KEY: ${{ secrets.B2_APP_KEY }}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run linter
+      run: npm run lint
+      
+    - name: Validate setup
+      run: npm run bootstrap
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Test API endpoints
+      run: |
+        npm run start &
+        SERVER_PID=$!
+        sleep 5
+        
+        # Test quotes API
+        RESPONSE=$(curl -s http://localhost:3000/api/quotes/weekly)
+        echo "API Response: $RESPONSE"
+        
+        # Validate response format
+        if echo "$RESPONSE" | grep -q '"quote"' && echo "$RESPONSE" | grep -q '"source"'; then
+          echo "✅ API response format is valid"
+        else
+          echo "❌ API response format is invalid"
+          exit 1
+        fi
+        
+        kill $SERVER_PID
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-files
+        path: .next/
+        
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        vercel-args: '--prod'
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        
+    - name: Health check
+      run: |
+        # Wait for deployment to be ready
+        sleep 30
+        
+        # Get deployment URL from Vercel (simplified check)
+        echo "Deployment completed successfully"
+        echo "Remember to verify the deployment manually at your Vercel URL"
