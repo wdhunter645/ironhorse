@@ -1,6 +1,13 @@
 # IronHorse - Lou Gehrig Fan Club
 
-A Next.js application for the Lou Gehrig Fan Club with Supabase backend.
+A Next.js application for the Lou Gehrig Fan Club with Supabase backend, featuring a comprehensive collectibles showcase.
+
+## 🏆 Features
+
+- **Lou Gehrig Collectibles Website**: Complete showcase of baseball cards, autographs, equipment, photographs, programs, and most valuable items
+- **Interactive Collection Pages**: Detailed cards with pricing, rarity, and historical significance
+- **Investment Guides**: Market trends, collecting tips, and authentication information
+- **Responsive Design**: Optimized for all devices with beautiful Tailwind CSS styling
 
 ## Quick Start (Supabase Cloud Only)
 
