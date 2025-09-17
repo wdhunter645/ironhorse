@@ -34,6 +34,14 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
    ```
 
 3. **Set up the database schema:**
+   
+   **Option 1: Using Migration Display Tool (Recommended):**
+   ```bash
+   npm run db:migrations
+   # Copy the displayed SQL and run it in Supabase SQL Editor
+   ```
+   
+   **Option 2: Manual Setup:**
    Follow the instructions in `DATABASE_SETUP.md` to create the required tables in your Supabase project.
 
 4. **Configure environment variables:**
@@ -59,17 +67,37 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
 
 ### Database Schema & Migrations
 
-- The database schema is defined in `sql/supabase_cloud_migration.sql`
+The database schema is managed through migration files in `supabase/migrations/`. Two main approaches:
+
+**Option 1: Migration Display Tool (Recommended)**
+```bash
+npm run db:migrations    # Display migration SQL for manual application
+npm run db:validate      # Validate schema after application
+```
+
+**Option 2: Direct SQL Files (Legacy)**
+- The database schema is available in `sql/supabase_cloud_migration.sql`
 - Apply it directly to your Supabase Cloud project using the Supabase SQL editor
 - See `DATABASE_SETUP.md` for step-by-step instructions
 - Sample data is available in `sql/supabase_cloud_seed.sql`
 
+**Migration Files:**
+- `supabase/migrations/20250101000000_initial_schema.sql` - Core database tables and policies
+- `supabase/migrations/20250101000001_seed_data.sql` - Sample data for testing
+
 ### Available Scripts
 
+**Development:**
 - `npm run dev` — Start development server
 - `npm run build` — Build for production
 - `npm run start` — Start production server
 - `npm run lint` — Run ESLint
+
+**Database Management:**
+- `npm run db:migrations` — Display migration SQL for manual application
+- `npm run db:validate` — Validate database schema and connectivity
+- `npm run db:setup` — Deploy and validate database (legacy)
+- `npm run db:deploy` — Deploy database schema (legacy)
 
 ### Environment Variables
 

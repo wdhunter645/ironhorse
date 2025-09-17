@@ -1,8 +1,31 @@
 # Database Schema Setup Guide
 
-## Quick Setup Method
+## Migration-Based Setup (Recommended)
 
-The fastest way to set up the database schema is through the Supabase Dashboard:
+The recommended way to set up the database schema is using the migration files in `supabase/migrations/`.
+
+### 1. Display Migration SQL
+```bash
+npm run db:migrations
+```
+
+This command will display the migration SQL that needs to be applied to your Supabase database.
+
+### 2. Apply Migrations in Supabase Dashboard
+1. Go to [app.supabase.com](https://app.supabase.com)
+2. Open your project dashboard
+3. Navigate to **SQL Editor** in the left sidebar
+4. Copy and paste the migration SQL from step 1
+5. Click **Run** for each migration in order
+
+### 3. Verify Setup
+```bash
+npm run db:validate
+```
+
+## Legacy Quick Setup Method
+
+Alternative method using direct SQL files:
 
 ### 1. Access Your Supabase Project
 - Go to [app.supabase.com](https://app.supabase.com)
@@ -222,6 +245,13 @@ Expected output:
 
 ## Schema Files
 
+**Migration Files (Recommended):**
+- `supabase/migrations/20250101000000_initial_schema.sql` - Initial database schema with tables, indexes, RLS policies, and triggers
+- `supabase/migrations/20250101000001_seed_data.sql` - Sample data for testing
+- `scripts/display_migrations.js` - Migration display tool
+- `scripts/apply_migrations.js` - Migration application script (advanced)
+
+**Legacy SQL Files:**
 - `sql/supabase_cloud_migration.sql` - Complete schema with RLS policies
 - `sql/supabase_cloud_seed.sql` - Sample data for testing
 - `scripts/setup_db_manual.js` - Automated setup script (requires service role key)

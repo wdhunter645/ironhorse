@@ -12,7 +12,9 @@
     "db:deploy": "bash scripts/deploy_database.sh",
     "db:validate": "node scripts/validate_database.js",
     "db:setup": "npm run db:deploy && npm run db:validate",
-    "db:apply": "bash scripts/db_apply.sh"
+    "db:apply": "bash scripts/db_apply.sh",
+    "db:migrate": "node scripts/apply_migrations.js",
+    "db:migrations": "node scripts/display_migrations.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.38.0",
