@@ -1,1 +1,0 @@
-alter table quotes enable row level security; alter table media_assets enable row level security; create policy "Public read quotes" on quotes for select using (true); create policy "Public read media" on media_assets for select using (true);

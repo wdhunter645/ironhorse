@@ -6,19 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "bootstrap": "node scripts/bootstrap.js",
-    "setup": "node scripts/bootstrap.js",
-    "db:deploy": "bash scripts/deploy_database.sh",
-    "db:validate": "node scripts/validate_database.js",
-    "db:setup": "npm run db:deploy && npm run db:validate",
-    "db:apply": "bash scripts/db_apply.sh",
-    "db:migrate": "node scripts/apply_migrations.js",
-    "db:migrations": "node scripts/display_migrations.js"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.38.0",
-    "dotenv": "^17.2.2",
     "next": "^14.2.32",
     "react": "^18",
     "react-dom": "^18"
