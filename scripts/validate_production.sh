@@ -29,7 +29,7 @@ sleep 5
 
 # Test API endpoint
 echo "Testing /api/quotes/weekly endpoint..."
-RESPONSE=$(curl -s http://localhost:3000/api/quotes/weekly || echo '{"error": "connection failed"}')
+RESPONSE=$(curl -s http://127.0.0.1:3000/api/quotes/weekly || echo '{"error": "connection failed"}')
 echo "API Response: $RESPONSE"
 
 # Check if we get fallback data (expected behavior)

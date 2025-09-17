@@ -35,14 +35,14 @@ bash scripts/db_apply.sh
    npm run dev
    ```
 
-2. Visit the test page:
+2. Visit the test page in your browser:
    ```
-   http://localhost:3000/test-supabase
+   your-dev-server-url/test-supabase
    ```
 
 3. Test the API endpoint:
    ```bash
-   curl http://localhost:3000/api/quotes/weekly
+   curl your-dev-server-url/api/quotes/weekly
    ```
 
 ## Expected Results

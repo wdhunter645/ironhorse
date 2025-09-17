@@ -37,6 +37,13 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
    Follow the instructions in `DATABASE_SETUP.md` to create the required tables in your Supabase project.
 
 4. **Configure environment variables:**
+   
+   **For Production (Recommended):**
+   ```bash
+   bash scripts/set_repo_secrets.sh
+   ```
+   
+   **For Local Development (Optional):**
    ```bash
    cp env.sample .env.local
    # Fill in your Supabase Cloud credentials
@@ -46,8 +53,8 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
    ```bash
    npm run dev
    ```
-   - Open [http://localhost:3000](http://localhost:3000) in your browser.
-   - Test connectivity at [http://localhost:3000/test-supabase](http://localhost:3000/test-supabase)
+   - Open your development server URL in your browser
+   - Test connectivity at `/test-supabase` endpoint
 
 ### Database Schema & Migrations
 

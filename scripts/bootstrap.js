@@ -195,8 +195,8 @@ function printSetupInstructions() {
   
   log('3. Verification:', 'yellow');
   log('   • Run: npm run dev');
-  log('   • Visit: http://localhost:3000/test-supabase');
-  log('   • Check: http://localhost:3000/api/quotes/weekly\n');
+  log('   • Visit: your-dev-server/test-supabase');
+  log('   • Check: your-dev-server/api/quotes/weekly\n');
 }
 
 function printSuccessMessage() {
@@ -207,8 +207,8 @@ function printSuccessMessage() {
   
   log('\nNext steps:', 'cyan');
   log('• Start development: npm run dev');
-  log('• Test the app: http://localhost:3000');
-  log('• View connectivity: http://localhost:3000/test-supabase');
+  log('• Test the app in your browser at the dev server URL');
+  log('• View connectivity: /test-supabase endpoint');
   log('• Deploy to production: vercel --prod');
 }
 

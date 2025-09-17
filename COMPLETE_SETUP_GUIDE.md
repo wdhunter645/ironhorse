@@ -104,12 +104,13 @@ npm run bootstrap
 # 1. Start development server
 npm run dev
 
-# 2. Test pages
-open http://localhost:3000
-open http://localhost:3000/test-supabase
+# 2. Test pages in your browser
+# Visit your development server URL (typically shown in terminal)
+# Navigate to /test-supabase endpoint
 
 # 3. Test API
-curl http://localhost:3000/api/quotes/weekly
+# Use your development server URL for the API test
+curl your-dev-server-url/api/quotes/weekly
 ```
 
 ### Production Validation

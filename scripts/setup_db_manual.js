@@ -26,7 +26,10 @@ async function applySchemaManually() {
   console.log('Since we cannot execute DDL with the anon key, here are the steps to apply the schema:');
   console.log('');
   console.log('1. Go to your Supabase dashboard: https://app.supabase.com');
-  console.log('2. Open your project: https://lolfycmpjhbdyeyrwnbv.supabase.co');
+  console.log('2. Open your project dashboard');
+  if (supabaseUrl) {
+    console.log(`   Your project URL: ${supabaseUrl}`);
+  }
   console.log('3. Go to the SQL Editor');
   console.log('4. Copy and paste the following SQL:');
   console.log('');

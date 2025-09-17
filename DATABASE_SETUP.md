@@ -100,7 +100,7 @@ After setting up the database:
 
 2. Visit the test page:
    ```
-   http://localhost:3000/test-supabase
+   your-dev-server-url/test-supabase
    ```
 
 3. You should see the quotes and media assets displayed instead of connection errors.
