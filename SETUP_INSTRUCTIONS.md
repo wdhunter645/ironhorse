@@ -47,7 +47,15 @@ npm install
 
 ### 3. Environment Variables Setup
 
-Copy the environment template and fill in your Supabase Cloud and B2 credentials:
+**Production Setup (Recommended):**
+Set GitHub repository secrets for all deployments:
+
+```bash
+bash scripts/set_repo_secrets.sh
+```
+
+**Local Development Setup (Optional):**
+For local development only, copy the template and fill in credentials:
 
 ```bash
 cp env.sample .env.local
@@ -56,12 +64,16 @@ cp env.sample .env.local
 
 ### 4. Apply Database Schema
 
-Apply the SQL migration files in `sql/` directly to your Supabase Cloud project using:
-- The Supabase SQL editor in your dashboard, OR  
-- The Supabase CLI pointed at your cloud project: `npx supabase db push`
+Apply the SQL migration files in `sql/` directly to your Supabase Cloud project using the Supabase SQL editor in your dashboard. See `DATABASE_SETUP.md` for detailed instructions.
 
-### 5. Start Development Server
+### 5. Deploy or Start Development
 
+**Production Deployment:**
+```bash
+vercel --prod
+```
+
+**Local Development (Optional):**
 ```bash
 npm run dev
 ```

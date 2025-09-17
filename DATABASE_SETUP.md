@@ -132,11 +132,11 @@ bash scripts/set_repo_secrets_improved.sh
 
 ## Alternative: Command Line Setup
 
-If you have the service role key, you can use the automated script:
+If you have the service role key set as an environment variable or GitHub secret, you can use the automated script:
 
 ```bash
-# Add service role key to .env.local
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+# Set service role key as environment variable (or use GitHub secrets)
+export SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 
 # Run setup script
 node scripts/setup_db_manual.js
