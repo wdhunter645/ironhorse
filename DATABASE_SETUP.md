@@ -77,6 +77,59 @@ ON CONFLICT DO NOTHING;
 - You should see both `quotes` and `media_assets` tables
 - Each table should have sample data
 
+## Automated Deployment Methods
+
+### Method 1: Using Makefile (Recommended)
+
+```bash
+# Deploy schema and validate
+make db-setup
+
+# Or run steps individually:
+make db-deploy    # Deploy schema to Supabase Cloud
+make db-validate  # Validate tables exist and are accessible
+```
+
+### Method 2: Using npm scripts
+
+```bash
+# Deploy and validate
+npm run db:setup
+
+# Or individual steps:
+npm run db:deploy   # Deploy schema
+npm run db:validate # Validate deployment
+```
+
+### Method 3: Manual scripts
+
+```bash
+# Deploy database schema
+bash scripts/deploy_database.sh
+
+# Validate deployment
+node scripts/validate_database.js
+```
+
+## Production Deployment with CI/CD
+
+The repository includes GitHub Actions workflow that automatically:
+1. Applies database schema to Supabase Cloud
+2. Validates table creation and accessibility
+3. Runs comprehensive health checks
+
+All configuration uses repository secrets:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY` (optional but recommended)
+
+### Setting Repository Secrets
+
+```bash
+# Set all repository secrets from .env.local
+bash scripts/set_repo_secrets_improved.sh
+```
+
 ## Alternative: Command Line Setup
 
 If you have the service role key, you can use the automated script:
@@ -93,6 +146,7 @@ node scripts/setup_db_manual.js
 
 After setting up the database:
 
+### Method 1: Web Interface
 1. Start the development server:
    ```bash
    npm run dev
@@ -105,14 +159,100 @@ After setting up the database:
 
 3. You should see the quotes and media assets displayed instead of connection errors.
 
+### Method 2: API Health Check
+Visit the health endpoint to verify database status:
+```
+http://localhost:3000/api/health/database
+```
+
+Expected response for healthy database:
+```json
+{
+  "timestamp": "2025-01-17T13:45:00.000Z",
+  "status": "healthy",
+  "tables": {
+    "quotes": { "accessible": true, "count": 3, "error": null },
+    "media_assets": { "accessible": true, "count": 3, "error": null }
+  },
+  "overall": { 
+    "healthy": true, 
+    "message": "All database tables are accessible and properly configured" 
+  }
+}
+```
+
+### Method 3: Validation Script
+```bash
+node scripts/validate_database.js
+```
+
+Expected output:
+```
+🎉 All database validation tests passed!
+
+✅ Database Schema Status:
+   - quotes table: Available and accessible
+   - media_assets table: Available and accessible
+   - Row Level Security: Enabled
+   - Public read policies: Active
+```
+
 ## Troubleshooting
 
+### Common Issues
+
 - **"Table doesn't exist" errors**: The schema hasn't been applied yet
+  - Solution: Run `make db-deploy` or apply schema manually via Supabase dashboard
+
 - **"Permission denied" errors**: Check your RLS policies
+  - Solution: Verify public read policies are enabled
+
 - **"Connection failed" errors**: Verify your environment variables
+  - Solution: Check `.env.local` file and Supabase project configuration
+
+- **"Service key not available"**: Some features require service role key
+  - Solution: Add `SUPABASE_SERVICE_ROLE_KEY` to environment variables
+
+### Getting Help
+
+1. Check the health endpoint: `/api/health/database`
+2. Run validation: `node scripts/validate_database.js`
+3. Verify environment: `npm run bootstrap`
+4. Check Supabase dashboard for errors
 
 ## Schema Files
 
 - `sql/supabase_cloud_migration.sql` - Complete schema with RLS policies
 - `sql/supabase_cloud_seed.sql` - Sample data for testing
 - `scripts/setup_db_manual.js` - Automated setup script (requires service role key)
+- `scripts/deploy_database.sh` - Comprehensive deployment script
+- `scripts/validate_database.js` - Database validation and health check
+
+## Database Schema Details
+
+### Tables Created
+
+#### `quotes` Table
+- `id` (UUID, Primary Key) - Auto-generated unique identifier
+- `text` (TEXT, NOT NULL) - The quote text
+- `author` (TEXT) - Quote author (default: 'Lou Gehrig')
+- `created_at` (TIMESTAMPTZ) - Creation timestamp
+
+#### `media_assets` Table
+- `id` (UUID, Primary Key) - Auto-generated unique identifier
+- `filename` (TEXT) - Original filename
+- `url` (TEXT) - URL/path to the media file
+- `width` (INTEGER) - Image width in pixels
+- `height` (INTEGER) - Image height in pixels
+- `orientation` (TEXT) - 'portrait', 'landscape', or 'square'
+- `tags` (TEXT[]) - Array of tags for categorization
+- `status` (TEXT) - Approval status (default: 'approved')
+- `created_at` (TIMESTAMPTZ) - Creation timestamp
+
+### Security Features
+
+- **Row Level Security (RLS)** enabled on both tables
+- **Public read policies** allow authenticated and anonymous access
+- **Write policies** can be added as needed for user-generated content
+
+This schema is designed for Supabase Cloud and follows best practices for security and scalability.

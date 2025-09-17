@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "bootstrap": "node scripts/bootstrap.js",
-    "setup": "node scripts/bootstrap.js"
+    "setup": "node scripts/bootstrap.js",
+    "db:deploy": "bash scripts/deploy_database.sh",
+    "db:validate": "node scripts/validate_database.js",
+    "db:setup": "npm run db:deploy && npm run db:validate",
+    "db:apply": "bash scripts/db_apply.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.38.0",

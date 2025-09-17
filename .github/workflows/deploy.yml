@@ -38,6 +38,22 @@ jobs:
     - name: Run linter
       run: npm run lint
       
+    - name: Apply database schema to Supabase Cloud
+      run: |
+        # Apply database schema using the db_apply script
+        export DATABASE_URL="postgresql://postgres:${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}@db.lolfycmpjhbdyeyrwnbv.supabase.co:5432/postgres"
+        bash scripts/db_apply.sh
+      if: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
+      
+    - name: Validate database schema
+      run: |
+        # Test database connection and verify tables exist
+        node scripts/validate_database.js
+      env:
+        NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        
     - name: Validate setup
       run: npm run bootstrap
       
