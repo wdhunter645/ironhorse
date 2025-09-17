@@ -24,7 +24,7 @@ The application requires database tables to be created in your Supabase Cloud in
 
 1. **Open Supabase Dashboard**
    - Go to [app.supabase.com](https://app.supabase.com)
-   - Open your project: `lolfycmpjhbdyeyrwnbv.supabase.co`
+   - Open your project dashboard
 
 2. **Create Tables**
    - Navigate to **SQL Editor**
@@ -58,7 +58,7 @@ node scripts/setup_db_manual.js
 cp env.sample .env.local
 
 # Edit .env.local with your Supabase credentials:
-# NEXT_PUBLIC_SUPABASE_URL=https://lolfycmpjhbdyeyrwnbv.supabase.co
+# NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 # NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 ```
 
@@ -104,12 +104,13 @@ npm run bootstrap
 # 1. Start development server
 npm run dev
 
-# 2. Test pages
-open http://localhost:3000
-open http://localhost:3000/test-supabase
+# 2. Test pages in your browser
+# Visit your development server URL (typically shown in terminal)
+# Navigate to /test-supabase endpoint
 
 # 3. Test API
-curl http://localhost:3000/api/quotes/weekly
+# Use your development server URL for the API test
+curl your-dev-server-url/api/quotes/weekly
 ```
 
 ### Production Validation

@@ -54,8 +54,8 @@ This project uses **Supabase Cloud**—no local Supabase CLI or Docker required.
    ```bash
    npm run dev
    ```
-   - Open [http://localhost:3000](http://localhost:3000) in your browser.
-   - Test connectivity at [http://localhost:3000/test-supabase](http://localhost:3000/test-supabase)
+   - Open your development server URL in your browser
+   - Test connectivity at `/test-supabase` endpoint
 
 ### Database Schema & Migrations
 
