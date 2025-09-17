@@ -11,6 +11,22 @@ Before running the setup scripts, ensure you have:
 5. **Vercel CLI**: Install and authenticate `vercel` CLI tool
 6. **Supabase CLI**: Install and authenticate `supabase` CLI tool
 
+### Installing CLI Tools
+
+If you're missing any CLI tools, run the installation script:
+
+```bash
+bash scripts/install_missing_tools.sh
+```
+
+To verify all CLI tools are properly installed:
+
+```bash
+bash scripts/verify_cli_tools.sh
+# OR
+make verify-cli
+```
+
 ## Environment Variables Setup
 
 Copy `.env.local` and fill in the required values:
