@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts for vintage serif typography */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap');
+
+/* Vintage background patterns using CSS */
+.vintage-linen-bg {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 128, 107, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(160, 147, 124, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(180, 165, 140, 0.02) 0%, transparent 50%),
+    linear-gradient(135deg, #f5f3f0 0%, #f0ede8 50%, #f5f3f0 100%);
+  background-size: 
+    60px 60px,
+    80px 80px,
+    40px 40px,
+    100% 100%;
+}
+
+/* Vintage paper texture overlay */
+.vintage-paper-texture {
+  position: relative;
+}
+
+.vintage-paper-texture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 128, 107, 0.01) 2px,
+      rgba(139, 128, 107, 0.01) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(160, 147, 124, 0.01) 2px,
+      rgba(160, 147, 124, 0.01) 4px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vintage card styling */
+.vintage-card {
+  @apply bg-white rounded-lg shadow-lg border border-amber-100;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(180, 140, 70, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.vintage-card:hover {
+  @apply shadow-xl;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Vintage typography */
+.vintage-heading {
+  font-family: 'Playfair Display', serif;
+  @apply text-amber-900;
+}
+
+.vintage-subheading {
+  font-family: 'Crimson Text', serif;
+  @apply text-amber-800;
+}
+
+.vintage-text {
+  font-family: 'Crimson Text', serif;
+  @apply text-gray-700;
+}
+
+/* Vintage border accent */
+.vintage-border {
+  border: 2px solid rgba(180, 140, 70, 0.3);
+  border-radius: 0.5rem;
+}
+
+.vintage-border-thin {
+  border: 1px solid rgba(180, 140, 70, 0.2);
+}
+
+/* Vintage color palette utilities */
+.text-vintage-brown { color: #8B6F47; }
+.text-vintage-tan { color: #D2B48C; }
+.text-vintage-gold { color: #B8860B; }
+.text-vintage-amber { color: #D2691E; }
+.bg-vintage-cream { background-color: #F5F5DC; }
+.bg-vintage-linen { background-color: #F0EDE8; }
+.border-vintage-gold { border-color: rgba(184, 134, 11, 0.3); }

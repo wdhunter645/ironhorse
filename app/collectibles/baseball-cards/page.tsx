@@ -103,104 +103,104 @@ export default function BaseballCards() {
   return (
     <div className='space-y-8'>
       {/* Header */}
-      <header className='text-center py-12 bg-gradient-to-r from-green-900 to-green-700 text-white rounded-lg'>
-        <h1 className='text-5xl font-bold mb-4'>Lou Gehrig Baseball Cards</h1>
-        <p className='text-xl mb-2'>Vintage Trading Cards from the Golden Age</p>
-        <p className='text-lg opacity-90'>Discover the most valuable and collectible Lou Gehrig cards</p>
+      <header className='text-center py-12 bg-gradient-to-r from-vintage-brown to-amber-900 text-vintage-cream rounded-lg shadow-lg border-vintage-gold'>
+        <h1 className='text-5xl font-bold mb-4 vintage-heading'>Lou Gehrig Baseball Cards</h1>
+        <p className='text-xl mb-2 vintage-text text-vintage-cream'>Vintage Trading Cards from the Golden Age</p>
+        <p className='text-lg opacity-90 vintage-text text-vintage-cream'>Discover the most valuable and collectible Lou Gehrig cards</p>
       </header>
 
       {/* Navigation Breadcrumb */}
-      <nav className='text-sm text-gray-600'>
-        <Link href='/' className='hover:text-blue-600'>Home</Link>
+      <nav className='text-sm vintage-text'>
+        <Link href='/' className='hover:text-vintage-gold'>Home</Link>
         <span className='mx-2'>›</span>
-        <Link href='/collectibles' className='hover:text-blue-600'>Collectibles</Link>
+        <Link href='/collectibles' className='hover:text-vintage-gold'>Collectibles</Link>
         <span className='mx-2'>›</span>
-        <span className='font-semibold'>Baseball Cards</span>
+        <span className='font-semibold text-vintage-brown'>Baseball Cards</span>
       </nav>
 
       {/* Introduction */}
-      <section className='bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg'>
-        <h2 className='text-2xl font-bold text-green-800 mb-3'>Lou Gehrig Baseball Card Guide</h2>
-        <p className='text-gray-700 mb-4'>
+      <section className='vintage-card border-l-4 border-vintage-gold p-6 rounded-r-lg'>
+        <h2 className='text-2xl font-bold vintage-heading mb-3'>Lou Gehrig Baseball Card Guide</h2>
+        <p className='vintage-text mb-4'>
           Lou Gehrig&apos;s baseball cards span from the early 1930s through his farewell in 1939, representing some of the most valuable 
           pre-war baseball cards in existence. His cards are characterized by their rarity, historical significance, and the tragic 
           story that makes them emotionally resonant with collectors.
         </p>
         <div className='grid md:grid-cols-3 gap-4 text-sm'>
-          <div className='bg-white p-3 rounded border'>
-            <h4 className='font-semibold text-green-800'>Peak Years</h4>
-            <p className='text-gray-600'>1933-1936 Diamond Stars and Goudey issues are most valuable</p>
+          <div className='vintage-card vintage-border-thin p-3 rounded'>
+            <h4 className='font-semibold vintage-subheading'>Peak Years</h4>
+            <p className='vintage-text'>1933-1936 Diamond Stars and Goudey issues are most valuable</p>
           </div>
-          <div className='bg-white p-3 rounded border'>
-            <h4 className='font-semibold text-green-800'>Condition Sensitivity</h4>
-            <p className='text-gray-600'>Pre-war cards show dramatic value differences by grade</p>
+          <div className='vintage-card vintage-border-thin p-3 rounded'>
+            <h4 className='font-semibold vintage-subheading'>Condition Sensitivity</h4>
+            <p className='vintage-text'>Pre-war cards show dramatic value differences by grade</p>
           </div>
-          <div className='bg-white p-3 rounded border'>
-            <h4 className='font-semibold text-green-800'>Investment Potential</h4>
-            <p className='text-gray-600'>High-grade examples continue to appreciate significantly</p>
+          <div className='vintage-card vintage-border-thin p-3 rounded'>
+            <h4 className='font-semibold vintage-subheading'>Investment Potential</h4>
+            <p className='vintage-text'>High-grade examples continue to appreciate significantly</p>
           </div>
         </div>
       </section>
 
       {/* Card Collection */}
       <section className='space-y-8'>
-        <h2 className='text-3xl font-bold text-center text-gray-800'>Complete Lou Gehrig Card Collection</h2>
+        <h2 className='text-3xl font-bold text-center vintage-heading'>Complete Lou Gehrig Card Collection</h2>
         
         <div className='space-y-8'>
           {baseballCards.map((card) => (
-            <article key={card.id} className='bg-white border-2 border-gray-200 rounded-lg p-8 hover:border-green-400 hover:shadow-lg transition-all'>
+            <article key={card.id} className='vintage-card vintage-border p-8 hover:shadow-xl transition-all'>
               <div className='grid lg:grid-cols-3 gap-8'>
                 {/* Card Info */}
                 <div className='lg:col-span-2'>
                   <div className='flex justify-between items-start mb-4'>
                     <div>
-                      <h3 className='text-3xl font-bold text-green-800 mb-2'>{card.title}</h3>
+                      <h3 className='text-3xl font-bold vintage-heading mb-2'>{card.title}</h3>
                       <div className='flex gap-2 mb-3'>
-                        <span className='px-3 py-1 bg-green-100 text-green-800 text-sm rounded font-semibold'>{card.set}</span>
-                        <span className='px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded'>{card.year}</span>
-                        <span className='px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded'>{card.number}</span>
+                        <span className='px-3 py-1 bg-vintage-cream text-vintage-brown text-sm rounded font-semibold border border-vintage-gold'>{card.set}</span>
+                        <span className='px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded border border-amber-300'>{card.year}</span>
+                        <span className='px-3 py-1 bg-vintage-linen text-gray-600 text-sm rounded border border-gray-300'>{card.number}</span>
                       </div>
                     </div>
                     <div className='text-right'>
-                      <div className='text-lg font-bold text-red-600'>Rarity: {card.rarity}</div>
+                      <div className='text-lg font-bold text-vintage-amber vintage-subheading'>Rarity: {card.rarity}</div>
                     </div>
                   </div>
 
-                  <p className='text-gray-700 mb-6 text-lg leading-relaxed'>{card.description}</p>
+                  <p className='vintage-text mb-6 text-lg leading-relaxed'>{card.description}</p>
 
-                  <div className='bg-gray-50 p-4 rounded-lg mb-6'>
-                    <h4 className='font-bold text-gray-800 mb-3'>Historical Significance</h4>
-                    <p className='text-gray-600 italic'>{card.significance}</p>
+                  <div className='vintage-card vintage-border-thin p-4 rounded-lg mb-6'>
+                    <h4 className='font-bold vintage-subheading mb-3'>Historical Significance</h4>
+                    <p className='vintage-text italic'>{card.significance}</p>
                   </div>
                 </div>
 
                 {/* Pricing Grid */}
-                <div className='bg-gray-50 p-6 rounded-lg'>
-                  <h4 className='text-xl font-bold text-gray-800 mb-4 text-center'>Current Market Values</h4>
+                <div className='vintage-card vintage-border-thin p-6 rounded-lg'>
+                  <h4 className='text-xl font-bold vintage-heading mb-4 text-center'>Current Market Values</h4>
                   <div className='space-y-3'>
                     {card.grades.map((gradeInfo, index) => (
-                      <div key={index} className='bg-white p-3 rounded border flex justify-between items-center'>
+                      <div key={index} className='vintage-card vintage-border-thin p-3 rounded flex justify-between items-center'>
                         <div>
-                          <div className='font-bold text-gray-800'>{gradeInfo.grade}</div>
-                          <div className='text-xs text-gray-500'>Pop: {gradeInfo.population}</div>
+                          <div className='font-bold vintage-subheading'>{gradeInfo.grade}</div>
+                          <div className='text-xs vintage-text'>Pop: {gradeInfo.population}</div>
                         </div>
                         <div className='text-right'>
-                          <div className='font-bold text-green-600'>{gradeInfo.value}</div>
+                          <div className='font-bold text-vintage-gold vintage-subheading'>{gradeInfo.value}</div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className='mt-4 pt-3 border-t border-gray-200 text-xs text-gray-500 text-center'>
+                  <div className='mt-4 pt-3 border-t border-vintage-gold border-opacity-30 text-xs vintage-text text-center'>
                     Population data from PSA Registry
                   </div>
                 </div>
               </div>
 
-              <div className='mt-6 pt-6 border-t border-gray-200 flex justify-between items-center'>
-                <button className='bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition-colors font-semibold'>
+              <div className='mt-6 pt-6 border-t border-vintage-gold border-opacity-30 flex justify-between items-center'>
+                <button className='bg-vintage-brown text-vintage-cream px-6 py-2 rounded hover:bg-amber-900 transition-colors font-semibold vintage-subheading'>
                   View Auction Results
                 </button>
-                <button className='border-2 border-green-600 text-green-600 px-6 py-2 rounded hover:bg-green-600 hover:text-white transition-colors font-semibold'>
+                <button className='border-2 border-vintage-gold text-vintage-gold px-6 py-2 rounded hover:bg-vintage-gold hover:text-white transition-colors font-semibold vintage-subheading'>
                   Add to Watchlist
                 </button>
               </div>
@@ -210,66 +210,66 @@ export default function BaseballCards() {
       </section>
 
       {/* Collecting Guide */}
-      <section className='bg-blue-50 p-8 rounded-lg'>
-        <h2 className='text-3xl font-bold text-center mb-8 text-blue-800'>Baseball Card Collecting Guide</h2>
+      <section className='vintage-card p-8 rounded-lg'>
+        <h2 className='text-3xl font-bold text-center mb-8 vintage-heading'>Baseball Card Collecting Guide</h2>
         <div className='grid md:grid-cols-2 gap-8'>
           <div>
-            <h3 className='text-xl font-bold text-blue-800 mb-4'>Grading & Authentication</h3>
-            <ul className='space-y-3 text-gray-700'>
-              <li className='flex items-start'><span className='text-blue-600 mr-2 font-bold'>PSA:</span>Most popular grading service for vintage cards</li>
-              <li className='flex items-start'><span className='text-blue-600 mr-2 font-bold'>SGC:</span>Alternative service with growing acceptance</li>
-              <li className='flex items-start'><span className='text-blue-600 mr-2 font-bold'>BGS:</span>Beckett grading, less common for pre-war</li>
-              <li className='flex items-start'><span className='text-blue-600 mr-2 font-bold'>Raw:</span>Ungraded cards can be risky but offer opportunity</li>
+            <h3 className='text-xl font-bold vintage-subheading mb-4'>Grading & Authentication</h3>
+            <ul className='space-y-3 vintage-text'>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2 font-bold'>PSA:</span>Most popular grading service for vintage cards</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2 font-bold'>SGC:</span>Alternative service with growing acceptance</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2 font-bold'>BGS:</span>Beckett grading, less common for pre-war</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2 font-bold'>Raw:</span>Ungraded cards can be risky but offer opportunity</li>
             </ul>
           </div>
           <div>
-            <h3 className='text-xl font-bold text-blue-800 mb-4'>Investment Strategy</h3>
-            <ul className='space-y-3 text-gray-700'>
-              <li className='flex items-start'><span className='text-blue-600 mr-2'>•</span>Focus on PSA 7+ for investment potential</li>
-              <li className='flex items-start'><span className='text-blue-600 mr-2'>•</span>1933 Goudey #160 is the cornerstone card</li>
-              <li className='flex items-start'><span className='text-blue-600 mr-2'>•</span>Diamond Stars offer premium artwork appeal</li>
-              <li className='flex items-start'><span className='text-blue-600 mr-2'>•</span>1939/1940 cards have emotional significance</li>
+            <h3 className='text-xl font-bold vintage-subheading mb-4'>Investment Strategy</h3>
+            <ul className='space-y-3 vintage-text'>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Focus on PSA 7+ for investment potential</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>1933 Goudey #160 is the cornerstone card</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Diamond Stars offer premium artwork appeal</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>1939/1940 cards have emotional significance</li>
             </ul>
           </div>
         </div>
       </section>
 
       {/* Market Trends */}
-      <section className='bg-gradient-to-r from-purple-100 to-purple-200 p-8 rounded-lg'>
-        <h2 className='text-3xl font-bold text-center mb-8 text-purple-800'>Market Trends & Analysis</h2>
+      <section className='vintage-card p-8 rounded-lg bg-gradient-to-r from-vintage-cream to-amber-50'>
+        <h2 className='text-3xl font-bold text-center mb-8 vintage-heading'>Market Trends & Analysis</h2>
         <div className='grid md:grid-cols-4 gap-6'>
-          <div className='bg-white p-6 rounded-lg shadow text-center'>
-            <h3 className='text-lg font-bold text-purple-800 mb-2'>5-Year Growth</h3>
-            <div className='text-3xl font-bold text-green-600 mb-1'>+285%</div>
-            <p className='text-sm text-gray-600'>Average for PSA 8+ Gehrig cards</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg text-center'>
+            <h3 className='text-lg font-bold vintage-subheading mb-2'>5-Year Growth</h3>
+            <div className='text-3xl font-bold text-vintage-gold mb-1'>+285%</div>
+            <p className='text-sm vintage-text'>Average for PSA 8+ Gehrig cards</p>
           </div>
-          <div className='bg-white p-6 rounded-lg shadow text-center'>
-            <h3 className='text-lg font-bold text-purple-800 mb-2'>Record Sale</h3>
-            <div className='text-3xl font-bold text-red-600 mb-1'>$275K</div>
-            <p className='text-sm text-gray-600'>1933 Goudey #160 PSA 9</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg text-center'>
+            <h3 className='text-lg font-bold vintage-subheading mb-2'>Record Sale</h3>
+            <div className='text-3xl font-bold text-vintage-amber mb-1'>$275K</div>
+            <p className='text-sm vintage-text'>1933 Goudey #160 PSA 9</p>
           </div>
-          <div className='bg-white p-6 rounded-lg shadow text-center'>
-            <h3 className='text-lg font-bold text-purple-800 mb-2'>Population</h3>
-            <div className='text-3xl font-bold text-blue-600 mb-1'>Limited</div>
-            <p className='text-sm text-gray-600'>High grades extremely scarce</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg text-center'>
+            <h3 className='text-lg font-bold vintage-subheading mb-2'>Population</h3>
+            <div className='text-3xl font-bold text-vintage-brown mb-1'>Limited</div>
+            <p className='text-sm vintage-text'>High grades extremely scarce</p>
           </div>
-          <div className='bg-white p-6 rounded-lg shadow text-center'>
-            <h3 className='text-lg font-bold text-purple-800 mb-2'>Future Outlook</h3>
-            <div className='text-3xl font-bold text-purple-600 mb-1'>Strong</div>
-            <p className='text-sm text-gray-600'>Continued appreciation expected</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg text-center'>
+            <h3 className='text-lg font-bold vintage-subheading mb-2'>Future Outlook</h3>
+            <div className='text-3xl font-bold text-vintage-gold mb-1'>Strong</div>
+            <p className='text-sm vintage-text'>Continued appreciation expected</p>
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className='text-center bg-gradient-to-r from-green-600 to-green-800 text-white p-8 rounded-lg'>
-        <h2 className='text-3xl font-bold mb-4'>Start Your Lou Gehrig Card Collection</h2>
-        <p className='text-lg mb-6'>Join fellow collectors in preserving the legacy of baseball&apos;s Iron Horse</p>
+      <section className='text-center bg-gradient-to-r from-vintage-brown to-amber-900 text-vintage-cream p-8 rounded-lg shadow-lg'>
+        <h2 className='text-3xl font-bold mb-4 vintage-heading'>Start Your Lou Gehrig Card Collection</h2>
+        <p className='text-lg mb-6 vintage-text text-vintage-cream'>Join fellow collectors in preserving the legacy of baseball&apos;s Iron Horse</p>
         <div className='flex justify-center gap-4'>
-          <Link href='/member' className='bg-white text-green-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors'>
+          <Link href='/member' className='bg-vintage-cream text-vintage-brown px-6 py-3 rounded-lg font-semibold hover:bg-vintage-linen transition-colors vintage-subheading'>
             Join Community
           </Link>
-          <Link href='/collectibles/most-valuable' className='border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-800 transition-colors'>
+          <Link href='/collectibles/most-valuable' className='border-2 border-vintage-cream text-vintage-cream px-6 py-3 rounded-lg font-semibold hover:bg-vintage-cream hover:text-vintage-brown transition-colors vintage-subheading'>
             View Most Valuable
           </Link>
         </div>

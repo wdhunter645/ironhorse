@@ -117,56 +117,56 @@ export default function MostValuableItems() {
   return (
     <div className='space-y-8'>
       {/* Header */}
-      <header className='text-center py-12 bg-gradient-to-r from-red-900 to-red-700 text-white rounded-lg'>
-        <h1 className='text-5xl font-bold mb-4'>Most Valuable Lou Gehrig Items</h1>
-        <p className='text-xl mb-2'>The Holy Grail of Baseball Collectibles</p>
-        <p className='text-lg opacity-90'>Discover the rarest and most valuable Lou Gehrig memorabilia ever sold</p>
+      <header className='text-center py-12 bg-gradient-to-r from-vintage-brown to-amber-900 text-vintage-cream rounded-lg shadow-lg border-vintage-gold'>
+        <h1 className='text-5xl font-bold mb-4 vintage-heading'>Most Valuable Lou Gehrig Items</h1>
+        <p className='text-xl mb-2 vintage-text text-vintage-cream'>The Holy Grail of Baseball Collectibles</p>
+        <p className='text-lg opacity-90 vintage-text text-vintage-cream'>Discover the rarest and most valuable Lou Gehrig memorabilia ever sold</p>
       </header>
 
       {/* Navigation Breadcrumb */}
-      <nav className='text-sm text-gray-600'>
-        <Link href='/' className='hover:text-blue-600'>Home</Link>
+      <nav className='text-sm vintage-text'>
+        <Link href='/' className='hover:text-vintage-gold'>Home</Link>
         <span className='mx-2'>›</span>
-        <Link href='/collectibles' className='hover:text-blue-600'>Collectibles</Link>
+        <Link href='/collectibles' className='hover:text-vintage-gold'>Collectibles</Link>
         <span className='mx-2'>›</span>
-        <span className='font-semibold'>Most Valuable Items</span>
+        <span className='font-semibold text-vintage-brown'>Most Valuable Items</span>
       </nav>
 
       {/* Introduction */}
-      <section className='bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg'>
-        <h2 className='text-2xl font-bold text-yellow-800 mb-3'>Investment Guide to Lou Gehrig Collectibles</h2>
-        <p className='text-gray-700 mb-4'>
+      <section className='vintage-card border-l-4 border-vintage-gold p-6 rounded-r-lg'>
+        <h2 className='text-2xl font-bold vintage-heading mb-3'>Investment Guide to Lou Gehrig Collectibles</h2>
+        <p className='vintage-text mb-4'>
           Lou Gehrig memorabilia represents some of the most stable and appreciating investments in the sports collectibles market. 
           The Iron Horse&apos;s tragic story, legendary career, and limited availability of authentic items drive consistent demand among collectors worldwide.
         </p>
         <div className='grid md:grid-cols-3 gap-4 text-sm'>
-          <div className='bg-white p-3 rounded border'>
-            <h4 className='font-semibold text-yellow-800'>Market Performance</h4>
-            <p className='text-gray-600'>Lou Gehrig items have appreciated 300-500% over the past decade</p>
+          <div className='vintage-card vintage-border-thin p-3 rounded'>
+            <h4 className='font-semibold vintage-subheading'>Market Performance</h4>
+            <p className='vintage-text'>Lou Gehrig items have appreciated 300-500% over the past decade</p>
           </div>
-          <div className='bg-white p-3 rounded border'>
-            <h4 className='font-semibold text-yellow-800'>Rarity Factor</h4>
-            <p className='text-gray-600'>Limited career span (1923-1939) creates natural scarcity</p>
+          <div className='vintage-card vintage-border-thin p-3 rounded'>
+            <h4 className='font-semibold vintage-subheading'>Rarity Factor</h4>
+            <p className='vintage-text'>Limited career span (1923-1939) creates natural scarcity</p>
           </div>
-          <div className='bg-white p-3 rounded border'>
-            <h4 className='font-semibold text-yellow-800'>Historical Significance</h4>
-            <p className='text-gray-600'>ALS awareness keeps Gehrig&apos;s legacy in public consciousness</p>
+          <div className='vintage-card vintage-border-thin p-3 rounded'>
+            <h4 className='font-semibold vintage-subheading'>Historical Significance</h4>
+            <p className='vintage-text'>ALS awareness keeps Gehrig&apos;s legacy in public consciousness</p>
           </div>
         </div>
       </section>
 
       {/* Filter/Sort Controls */}
-      <div className='bg-gray-100 p-4 rounded-lg'>
+      <div className='vintage-card p-4 rounded-lg'>
         <div className='flex flex-wrap gap-4 items-center justify-between'>
           <div className='flex gap-2 flex-wrap'>
-            <span className='text-sm font-semibold text-gray-700'>Filter by Category:</span>
-            <button className='px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700'>All Categories</button>
-            <button className='px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300'>Baseball Cards</button>
-            <button className='px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300'>Autographs</button>
-            <button className='px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300'>Equipment</button>
-            <button className='px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300'>Documents</button>
+            <span className='text-sm font-semibold vintage-subheading'>Filter by Category:</span>
+            <button className='px-3 py-1 bg-vintage-brown text-vintage-cream text-sm rounded hover:bg-amber-900 vintage-subheading'>All Categories</button>
+            <button className='px-3 py-1 bg-vintage-linen text-vintage-brown text-sm rounded hover:bg-vintage-cream vintage-text'>Baseball Cards</button>
+            <button className='px-3 py-1 bg-vintage-linen text-vintage-brown text-sm rounded hover:bg-vintage-cream vintage-text'>Autographs</button>
+            <button className='px-3 py-1 bg-vintage-linen text-vintage-brown text-sm rounded hover:bg-vintage-cream vintage-text'>Equipment</button>
+            <button className='px-3 py-1 bg-vintage-linen text-vintage-brown text-sm rounded hover:bg-vintage-cream vintage-text'>Documents</button>
           </div>
-          <div className='text-sm text-gray-600'>
+          <div className='text-sm vintage-text'>
             Showing {valuableItems.length} premium items
           </div>
         </div>
@@ -175,51 +175,51 @@ export default function MostValuableItems() {
       {/* Items Grid */}
       <section className='grid lg:grid-cols-2 gap-8'>
         {valuableItems.map((item) => (
-          <article key={item.id} className='bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-400 hover:shadow-xl transition-all'>
+          <article key={item.id} className='vintage-card vintage-border p-6 hover:shadow-xl transition-all'>
             <div className='flex justify-between items-start mb-4'>
               <div className='flex-1'>
-                <h3 className='text-2xl font-bold text-blue-800 mb-2'>{item.title}</h3>
+                <h3 className='text-2xl font-bold vintage-heading mb-2'>{item.title}</h3>
                 <div className='flex gap-2 mb-3'>
-                  <span className='px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded font-semibold'>{item.category}</span>
-                  <span className='px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded'>{item.year}</span>
+                  <span className='px-2 py-1 bg-vintage-cream text-vintage-brown text-xs rounded font-semibold border border-vintage-gold'>{item.category}</span>
+                  <span className='px-2 py-1 bg-vintage-linen text-gray-600 text-xs rounded border border-gray-300'>{item.year}</span>
                 </div>
               </div>
               <div className='text-right'>
-                <div className='text-2xl font-bold text-green-600'>{item.valueRange}</div>
-                <div className='text-sm text-gray-500'>{item.rarity}</div>
+                <div className='text-2xl font-bold text-vintage-gold vintage-subheading'>{item.valueRange}</div>
+                <div className='text-sm vintage-text'>{item.rarity}</div>
               </div>
             </div>
 
-            <p className='text-gray-700 mb-4 leading-relaxed'>{item.description}</p>
+            <p className='vintage-text mb-4 leading-relaxed'>{item.description}</p>
 
             <div className='grid md:grid-cols-2 gap-4 mb-4'>
               <div>
-                <h4 className='font-semibold text-gray-800 mb-1'>Condition</h4>
-                <p className='text-sm text-gray-600'>{item.condition}</p>
+                <h4 className='font-semibold vintage-subheading mb-1'>Condition</h4>
+                <p className='text-sm vintage-text'>{item.condition}</p>
               </div>
               <div>
-                <h4 className='font-semibold text-gray-800 mb-1'>Rarity</h4>
-                <p className='text-sm text-gray-600'>{item.rarity}</p>
+                <h4 className='font-semibold vintage-subheading mb-1'>Rarity</h4>
+                <p className='text-sm vintage-text'>{item.rarity}</p>
               </div>
             </div>
 
             <div className='mb-4'>
-              <h4 className='font-semibold text-gray-800 mb-2'>Key Highlights</h4>
+              <h4 className='font-semibold vintage-subheading mb-2'>Key Highlights</h4>
               <div className='grid grid-cols-2 gap-1'>
                 {item.highlights.map((highlight, index) => (
-                  <div key={index} className='text-sm text-gray-600 flex items-center'>
-                    <span className='text-green-500 mr-1'>✓</span>
+                  <div key={index} className='text-sm vintage-text flex items-center'>
+                    <span className='text-vintage-gold mr-1'>✓</span>
                     {highlight}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className='flex justify-between items-center pt-4 border-t border-gray-200'>
-              <button className='bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-semibold'>
+            <div className='flex justify-between items-center pt-4 border-t border-vintage-gold border-opacity-30'>
+              <button className='bg-vintage-brown text-vintage-cream px-4 py-2 rounded hover:bg-amber-900 transition-colors text-sm font-semibold vintage-subheading'>
                 View Details
               </button>
-              <div className='text-xs text-gray-500'>
+              <div className='text-xs vintage-text'>
                 Last updated: Current market values
               </div>
             </div>
@@ -228,61 +228,61 @@ export default function MostValuableItems() {
       </section>
 
       {/* Market Analysis */}
-      <section className='bg-blue-50 p-8 rounded-lg'>
-        <h2 className='text-3xl font-bold text-center mb-8 text-blue-800'>Market Analysis & Trends</h2>
+      <section className='vintage-card p-8 rounded-lg bg-gradient-to-r from-vintage-cream to-amber-50'>
+        <h2 className='text-3xl font-bold text-center mb-8 vintage-heading'>Market Analysis & Trends</h2>
         <div className='grid md:grid-cols-3 gap-6'>
-          <div className='bg-white p-6 rounded-lg shadow'>
-            <h3 className='text-xl font-bold text-blue-800 mb-3'>Price Appreciation</h3>
-            <div className='text-3xl font-bold text-green-600 mb-2'>+350%</div>
-            <p className='text-gray-600 text-sm'>Average appreciation over 10 years for high-grade Gehrig items</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg'>
+            <h3 className='text-xl font-bold vintage-subheading mb-3'>Price Appreciation</h3>
+            <div className='text-3xl font-bold text-vintage-gold mb-2'>+350%</div>
+            <p className='vintage-text text-sm'>Average appreciation over 10 years for high-grade Gehrig items</p>
           </div>
-          <div className='bg-white p-6 rounded-lg shadow'>
-            <h3 className='text-xl font-bold text-blue-800 mb-3'>Market Demand</h3>
-            <div className='text-3xl font-bold text-blue-600 mb-2'>High</div>
-            <p className='text-gray-600 text-sm'>Consistent demand from collectors and investors worldwide</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg'>
+            <h3 className='text-xl font-bold vintage-subheading mb-3'>Market Demand</h3>
+            <div className='text-3xl font-bold text-vintage-brown mb-2'>High</div>
+            <p className='vintage-text text-sm'>Consistent demand from collectors and investors worldwide</p>
           </div>
-          <div className='bg-white p-6 rounded-lg shadow'>
-            <h3 className='text-xl font-bold text-blue-800 mb-3'>Future Outlook</h3>
-            <div className='text-3xl font-bold text-purple-600 mb-2'>Strong</div>
-            <p className='text-gray-600 text-sm'>Limited supply and growing ALS awareness support continued growth</p>
+          <div className='vintage-card vintage-border-thin p-6 rounded-lg'>
+            <h3 className='text-xl font-bold vintage-subheading mb-3'>Future Outlook</h3>
+            <div className='text-3xl font-bold text-vintage-amber mb-2'>Strong</div>
+            <p className='vintage-text text-sm'>Limited supply and growing ALS awareness support continued growth</p>
           </div>
         </div>
       </section>
 
       {/* Collecting Advice */}
-      <section className='border-2 border-yellow-300 bg-yellow-50 p-8 rounded-lg'>
-        <h2 className='text-3xl font-bold text-center mb-6 text-yellow-800'>Expert Collecting Advice</h2>
+      <section className='vintage-card border-2 border-vintage-gold p-8 rounded-lg bg-vintage-cream'>
+        <h2 className='text-3xl font-bold text-center mb-6 vintage-heading'>Expert Collecting Advice</h2>
         <div className='grid md:grid-cols-2 gap-8'>
           <div>
-            <h3 className='text-xl font-bold text-yellow-800 mb-4'>Before You Buy</h3>
-            <ul className='space-y-2 text-gray-700'>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Always demand authentication from reputable services (PSA, SGC, JSA)</li>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Research comparable sales and market trends</li>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Verify provenance and ownership history</li>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Consider condition carefully - small differences mean big money</li>
+            <h3 className='text-xl font-bold vintage-subheading mb-4'>Before You Buy</h3>
+            <ul className='space-y-2 vintage-text'>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Always demand authentication from reputable services (PSA, SGC, JSA)</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Research comparable sales and market trends</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Verify provenance and ownership history</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Consider condition carefully - small differences mean big money</li>
             </ul>
           </div>
           <div>
-            <h3 className='text-xl font-bold text-yellow-800 mb-4'>Investment Strategy</h3>
-            <ul className='space-y-2 text-gray-700'>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Focus on authenticated, high-grade examples</li>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Diversify across different item categories</li>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Hold for long-term appreciation (5+ years)</li>
-              <li className='flex items-start'><span className='text-yellow-600 mr-2'>•</span>Stay informed about market trends and auction results</li>
+            <h3 className='text-xl font-bold vintage-subheading mb-4'>Investment Strategy</h3>
+            <ul className='space-y-2 vintage-text'>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Focus on authenticated, high-grade examples</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Diversify across different item categories</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Hold for long-term appreciation (5+ years)</li>
+              <li className='flex items-start'><span className='text-vintage-gold mr-2'>•</span>Stay informed about market trends and auction results</li>
             </ul>
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className='text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-lg'>
-        <h2 className='text-3xl font-bold mb-4'>Join the Lou Gehrig Collecting Community</h2>
-        <p className='text-lg mb-6'>Connect with fellow collectors, share discoveries, and stay updated on market trends</p>
+      <section className='text-center bg-gradient-to-r from-vintage-brown to-amber-900 text-vintage-cream p-8 rounded-lg shadow-lg'>
+        <h2 className='text-3xl font-bold mb-4 vintage-heading'>Join the Lou Gehrig Collecting Community</h2>
+        <p className='text-lg mb-6 vintage-text text-vintage-cream'>Connect with fellow collectors, share discoveries, and stay updated on market trends</p>
         <div className='flex justify-center gap-4'>
-          <Link href='/member' className='bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors'>
+          <Link href='/member' className='bg-vintage-cream text-vintage-brown px-6 py-3 rounded-lg font-semibold hover:bg-vintage-linen transition-colors vintage-subheading'>
             Join Fan Club
           </Link>
-          <Link href='/collectibles' className='border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition-colors'>
+          <Link href='/collectibles' className='border-2 border-vintage-cream text-vintage-cream px-6 py-3 rounded-lg font-semibold hover:bg-vintage-cream hover:text-vintage-brown transition-colors vintage-subheading'>
             Browse All Collections
           </Link>
         </div>
