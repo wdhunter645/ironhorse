@@ -2,21 +2,25 @@
 
 **Repository:** wdhunter645/ironhorse  
 **Assessment Date:** September 18, 2025  
-**Current Repository State:** 🎯 **STANDALONE EVALUATION WEBSITE**
+**Current Repository State:** 🚨 **ALL DEPLOYMENTS DISCONTINUED**
 
-## 🏗️ Deployment Architecture Clarification
+## 🚨 CRITICAL UPDATE: Deployment Infrastructure Removed
 
-This repository supports **3 separate Vercel deployments**:
+**All Vercel websites have been deleted as of September 19, 2025.**
 
-| Site | Purpose | Database Integration | Status |
+## 🏗️ Previous Deployment Architecture (Discontinued)
+
+The repository previously supported **3 separate Vercel deployments** (all now deleted):
+
+| Site | Previous Purpose | Database Integration | Status |
 |------|---------|---------------------|--------|
-| **Phase 1 Production** | Main production site | ✅ Supabase Cloud | Ready |
-| **Phase 1 Development** | Development/staging | ✅ Supabase Cloud | Ready |
-| **Standalone Evaluation** | Design testing (Bolt.New/Lovable) | ❌ Intentionally None | **Current Repo State** |
+| **Phase 1 Production** | Main production site | ✅ Supabase Cloud (planned) | ❌ **DELETED** |
+| **Phase 1 Development** | Development/staging | ✅ Supabase Cloud (planned) | ❌ **DELETED** |
+| **Standalone Evaluation** | Design testing (Bolt.New/Lovable) | ❌ Intentionally None | ❌ **DELETED** |
 
-## 🎯 Repository State Understanding
+## 🎯 Current Repository State: Local Development Only
 
-**Important:** The current main branch is configured for the **standalone evaluation website**, NOT the Phase 1 production implementation. This explains the intentional standalone mode operation.
+**All deployment infrastructure has been discontinued.** The repository now functions as a local development environment only.
 
 ## ✅ Current Repository Configuration (Standalone Evaluation)
 

@@ -38,6 +38,11 @@
 - **Environment Template:** ✅ Present (`env.sample`)
 - **Production Ready:** 🟡 Static site only
 
+### Vercel Deployment
+- **Status:** ❌ **DISCONTINUED** - All Vercel websites have been deleted
+- **Build Status:** ✅ Local builds working
+- **Assessment Note:** Previous 3-site deployment architecture no longer applies
+
 ### B2 Storage Configuration
 - **Status:** ❌ **NOT IMPLEMENTED**
 - **Scripts:** ❌ Non-functional (missing dependencies)
@@ -68,13 +73,15 @@
 
 ## 🧪 Smoke Test Results - COMPLETED
 
-### Health Check Endpoints ✅ TESTED
+### Health Check Endpoints ✅ TESTED (Local Development Only)
 - ✅ `/` - Home page: **200 OK** (Static content loads)
 - ✅ `/sitemap` - Sitemap page: **200 OK** 
 - ✅ `/privacy` - Privacy page: **200 OK**
 - ✅ `/terms` - Terms page: **200 OK**
 - ✅ `/api/quotes/weekly` - API endpoint: **200 OK** (Returns static Lou Gehrig quotes)
 - ✅ `/api/health/database` - Health endpoint: **200 OK** (Reports "standalone mode")
+
+**Note:** Deployment discontinued - testing limited to local development environment
 
 ### Test Results
 ```
@@ -122,10 +129,10 @@ Current Status: STANDALONE WEBSITE MODE
    - Status: **NOT IMPLEMENTED**
    - Issue: Scripts don't actually set any secrets
 
-5. ❌ **Vercel Environment** - **NOT FUNCTIONAL**
+5. ❌ **Vercel Environment** - **DISCONTINUED**
    - Script: `set_vercel_env.sh` - Basic template only
-   - Status: **NOT IMPLEMENTED**  
-   - Issue: Requires Vercel CLI (not installed)
+   - Status: **DISCONTINUED** - Vercel websites deleted
+   - Issue: All Vercel deployments have been removed
 
 6. ❌ **Database Schema** - **MISSING**
    - Script: `db_apply.sh` - **FAILS** (no SQL files)
@@ -137,10 +144,10 @@ Current Status: STANDALONE WEBSITE MODE
    - Status: **NO STORAGE INTEGRATION**
    - Issue: No B2 storage implementation
 
-8. 🟡 **Deployment & Health Check** - **PARTIAL**
-   - Vercel deployment: **CONFIG READY** (but static only)
-   - Script: `health_smoke.sh` - **WORKS** (tests static site)
-   - Status: **STATIC WEBSITE DEPLOYABLE**
+8. 🟡 **Deployment & Health Check** - **LOCAL ONLY**
+   - Deployment: **DISCONTINUED** (Vercel websites deleted)
+   - Script: `health_smoke.sh` - **WORKS** (local testing only)
+   - Status: **LOCAL DEVELOPMENT FUNCTIONAL**
 
 ---
 
@@ -161,12 +168,17 @@ Current Status: STANDALONE WEBSITE MODE
 
 ## 🔗 Quick Links
 
-- **Repository:** https://github.com/wdhunter645/ironhorse
-- **Current Status:** Standalone static website (no database)
-- **Deployment Ready:** Yes (static content only)
+## 🔗 Quick Links
+
+- **Live Site:** ❌ **DISCONTINUED** - All Vercel websites deleted
+- **Supabase Dashboard:** _[TO BE FILLED]_
+- **Vercel Dashboard:** ❌ **DISCONTINUED**
+- **GitHub Repository:** https://github.com/wdhunter645/ironhorse
+- **Current Status:** Standalone static website (local development only)
+- **Deployment Ready:** ❌ No (deployment infrastructure discontinued)
 - **Database Integration:** Not implemented
-- **Phase 1 Completion:** 30% (infrastructure only)
+- **Phase 1 Completion:** 30% (infrastructure only, no live deployment)
 
 ---
 
-**Note:** This report reflects the ACTUAL current implementation status as of September 18, 2025, not placeholder or aspirational information.
+**Note:** This report reflects the ACTUAL current implementation status as of September 18, 2025. Deployment has been discontinued as all Vercel websites have been deleted.
