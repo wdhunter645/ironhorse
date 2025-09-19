@@ -1,6 +1,17 @@
 # Setup Instructions for ironhorse Phase-1
 
-## Prerequisites
+## Quick Start with GitHub Codespaces
+
+**Recommended for fastest setup**: Open this repository in GitHub Codespaces for automatic environment setup.
+
+1. Click the **"Code"** button on GitHub
+2. Select **"Create codespace on main"**
+3. Wait for the automatic setup to complete (installs Node.js, Vercel CLI, GitHub CLI, and dependencies)
+4. Start developing immediately with `npm run dev`
+
+For codespaces-specific instructions, see [.devcontainer/README.md](.devcontainer/README.md).
+
+## Local Development Prerequisites
 
 Before running the setup scripts, ensure you have:
 
