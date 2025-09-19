@@ -18,9 +18,8 @@
   - `media_assets` table with RLS policies
 
 ### Vercel Deployment
-- **Production URL:** _[TO BE FILLED AFTER DEPLOYMENT]_
-- **Preview URL:** _[TO BE FILLED AFTER DEPLOYMENT]_
-- **Build Status:** _[TO BE FILLED]_
+- **Status:** Discontinued - All Vercel websites have been deleted
+- **Build Status:** ✅ Local builds working
 
 ### B2 Storage Configuration
 - **Endpoint:** _[TO BE FILLED]_
@@ -51,12 +50,12 @@
 ## 🧪 Smoke Test Results
 
 ### Health Check Endpoints
-_[TO BE FILLED AFTER DEPLOYMENT]_
-- [ ] `/` - Home page: _[STATUS CODE]_
-- [ ] `/sitemap` - Sitemap page: _[STATUS CODE]_
-- [ ] `/privacy` - Privacy page: _[STATUS CODE]_
-- [ ] `/terms` - Terms page: _[STATUS CODE]_
-- [ ] `/api/quotes/weekly` - API endpoint: _[STATUS CODE]_
+_[DEPLOYMENT DISCONTINUED - LOCAL TESTING ONLY]_
+- [ ] `/` - Home page: Working locally
+- [ ] `/sitemap` - Sitemap page: Working locally
+- [ ] `/privacy` - Privacy page: Working locally
+- [ ] `/terms` - Terms page: Working locally
+- [ ] `/api/quotes/weekly` - API endpoint: Working locally
 
 ### Test Results
 ```
@@ -86,7 +85,7 @@ _[TO BE FILLED AFTER DEPLOYMENT]_
 
 5. ⏳ **Vercel Environment**
    - Script: `set_vercel_env.sh`
-   - Status: _[TO BE FILLED]_
+   - Status: _[DISCONTINUED - VERCEL WEBSITES DELETED]_
 
 6. ⏳ **Database Schema**
    - Script: `db_apply.sh`
@@ -97,9 +96,9 @@ _[TO BE FILLED AFTER DEPLOYMENT]_
    - Status: _[TO BE FILLED]_
 
 8. ⏳ **Deployment & Health Check**
-   - Vercel deployment
+   - Local development only
    - Script: `health_smoke.sh`
-   - Status: _[TO BE FILLED]_
+   - Status: _[DEPLOYMENT DISCONTINUED]_
 
 ---
 
@@ -111,11 +110,11 @@ _[TO BE FILLED WITH ANY ISSUES ENCOUNTERED]_
 
 ## 🔗 Quick Links
 
-- **Live Site:** _[TO BE FILLED]_
+- **Live Site:** _[DISCONTINUED - ALL VERCEL WEBSITES DELETED]_
 - **Supabase Dashboard:** _[TO BE FILLED]_
-- **Vercel Dashboard:** _[TO BE FILLED]_
+- **Vercel Dashboard:** _[DISCONTINUED]_
 - **GitHub Repository:** https://github.com/wdhunter645/ironhorse
 
 ---
 
-**Note:** This report will be updated as setup scripts are executed and deployment is completed.
+**Note:** This report reflects the current status - deployment has been discontinued as all Vercel websites have been deleted.
