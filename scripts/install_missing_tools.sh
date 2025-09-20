@@ -34,13 +34,7 @@ if ! command -v vercel &> /dev/null; then
   npm install -g vercel
 fi
 
-# Install Supabase CLI
-if ! command -v supabase &> /dev/null; then
-  echo "Installing Supabase CLI..."
-  # Download and install Supabase CLI binary (npm global install is deprecated)
-  curl -sSL https://github.com/supabase/cli/releases/latest/download/supabase_linux_amd64.tar.gz | tar -xz
-  sudo mv supabase /usr/local/bin/
-  echo "Supabase CLI installed successfully"
-fi
-
-echo "All prerequisites attempted. Please rerun your setup scripts if no errors above."
+echo "Essential tools installed successfully!"
+echo ""
+echo "Note: This project uses Supabase Cloud only."
+echo "No local Supabase CLI installation is required."
