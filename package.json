@@ -1,34 +1,25 @@
 {
-<<<<<<< HEAD
-  "devDependencies": {
-    "@types/node": "24.5.0",
-    "@types/react": "19.1.13",
-    "eslint": "^8",
-    "eslint-config-next": "15.5.3",
-    "typescript": "5.9.2"
-=======
   "name": "ironhorse",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.57.4",
-    "next": "^14.2.32",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "8.57.1",
-    "eslint-config-next": "15.5.3",
-    "typescript": "^5"
->>>>>>> origin/main
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": ">=20.x"
   }
 }
