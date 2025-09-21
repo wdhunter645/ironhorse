@@ -14,3 +14,4 @@ validate-supabase: ; bash scripts/validate_supabase_setup.sh
 monitor-start: ; node scripts/supabase_monitor.js start
 monitor-test: ; node scripts/supabase_monitor.js test
 monitor-status: ; node scripts/supabase_monitor.js status
+monitor-demo: ; node scripts/test_monitoring_demo.js

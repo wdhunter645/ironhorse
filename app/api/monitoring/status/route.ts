@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 /**
  * Monitoring Status API
@@ -80,7 +80,7 @@ function getMonitoringStatus(): MonitoringStatus {
   };
 }
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const status = getMonitoringStatus();
     
