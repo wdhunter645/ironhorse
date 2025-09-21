@@ -10,6 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.21.0",
+    "dd-trace": "^5.67.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
