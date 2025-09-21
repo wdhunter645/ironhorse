@@ -1,1 +1,1 @@
-export default function Member(){return(<section className='space-y-3'><h1 className='text-2xl font-semibold'>Member Area (stub)</h1><p>Codex: implement login/signup, digital card, posts/comments, media upload, profile per DESIGN_PER_PAGE.md.</p></section>);}
+export default function Page() { return <div className="prose"><h1>Member Area - Coming soon</h1></div>; }

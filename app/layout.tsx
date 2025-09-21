@@ -1,19 +1,19 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
 
 export const metadata: Metadata = {
   title: "Lou Gehrig Fan Club",
-  description: "A zero-profit initiative supporting ALS research.",
+  description: "Phase-3 scaffold",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800 antialiased">
+      <body>
         <Header />
-        <main className="container mx-auto px-4 py-10">{children}</main>
+        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
         <Footer />
       </body>
     </html>

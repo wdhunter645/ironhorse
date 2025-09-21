@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export function Header() {
+export default function Header() {
   return (
     <header className="sticky top-0 z-20 bg-white/70 backdrop-blur border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
