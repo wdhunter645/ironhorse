@@ -40,6 +40,11 @@ declare -A SECRETS=(
     ["NEXT_PUBLIC_B2_BUCKET"]="$NEXT_PUBLIC_B2_BUCKET"
     ["B2_KEY_ID"]="$B2_KEY_ID"
     ["B2_APP_KEY"]="$B2_APP_KEY"
+    ["NEXT_PUBLIC_SENTRY_DSN"]="$NEXT_PUBLIC_SENTRY_DSN"
+    ["SENTRY_DSN"]="$SENTRY_DSN"
+    ["SENTRY_ORG"]="$SENTRY_ORG"
+    ["SENTRY_PROJECT"]="$SENTRY_PROJECT"
+    ["SENTRY_AUTH_TOKEN"]="$SENTRY_AUTH_TOKEN"
 )
 
 # Set each secret
@@ -61,7 +66,7 @@ echo "The following secrets have been configured:"
 echo
 
 # List all set secrets
-gh secret list -R "$REPO" | grep -E "(SUPABASE|B2)" || echo "No matching secrets found"
+gh secret list -R "$REPO" | grep -E "(SUPABASE|B2|SENTRY)" || echo "No matching secrets found"
 
 echo
 echo "✅ Repository secrets setup complete!"
