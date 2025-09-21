@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "settings": {
+    "autoApproval": {
+      "enabled": true,
+      "tasks": {
+        "code_changes": true,
+        "file_creation": true,
+        "file_modification": true,
+        "dependency_updates": false,
+        "configuration_changes": false
+      },
+      "maxChangesWithoutApproval": 10,
+      "allowClarifyingQuestions": true
+    },
+    "workflow": {
+      "requireExplicitApproval": false,
+      "autoExecuteAssignedTasks": true,
+      "provideStatusUpdates": true,
+      "allowInteractiveQuestions": true
+    },
+    "communication": {
+      "notifyOnTaskCompletion": true,
+      "notifyOnErrors": true,
+      "detailLevel": "summary"
+    }
+  },
+  "permissions": {
+    "fileOperations": {
+      "create": true,
+      "read": true,
+      "update": true,
+      "delete": false
+    },
+    "codeGeneration": {
+      "enabled": true,
+      "reviewRequired": false
+    },
+    "testing": {
+      "runTests": true,
+      "createTests": true
+    }
+  },
+  "excludes": [
+    "node_modules/**",
+    ".git/**",
+    ".next/**",
+    "*.lock",
+    "*.log"
+  ]
+}

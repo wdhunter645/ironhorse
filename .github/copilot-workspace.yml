@@ -1,0 +1,59 @@
+# GitHub Copilot Workspace Configuration
+# This configuration enables Copilot to work more autonomously on assigned tasks
+
+name: "ironhorse-copilot-config"
+version: "1.0"
+
+# Auto-approval settings for Copilot Spaces
+auto_approval:
+  enabled: true
+  scope:
+    - code_changes
+    - file_creation
+    - file_modification
+    - testing
+  
+  # Exclude sensitive operations that still need approval
+  exclude:
+    - dependency_updates
+    - security_changes
+    - deployment_configs
+
+# Workflow configuration
+workflow:
+  # Allow Copilot to complete assigned tasks without explicit approval
+  require_explicit_approval: false
+  
+  # Enable automatic execution of assigned tasks
+  auto_execute_assigned_tasks: true
+  
+  # Provide status updates when tasks are finished
+  provide_status_updates: true
+  
+  # Still allow clarifying questions
+  allow_clarifying_questions: true
+  
+  # Maximum number of changes before requiring approval
+  max_changes_without_approval: 10
+
+# Communication preferences  
+communication:
+  notify_on_completion: true
+  notify_on_errors: true
+  detail_level: "summary"
+  
+# File operation permissions
+file_operations:
+  create: true
+  read: true
+  update: true
+  delete: false  # Still require approval for deletions
+
+# Excluded paths that Copilot should not modify
+excluded_paths:
+  - "node_modules/**"
+  - ".git/**" 
+  - ".next/**"
+  - "*.lock"
+  - "*.log"
+  - ".env*"
