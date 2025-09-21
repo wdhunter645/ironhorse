@@ -1,0 +1,66 @@
+{
+  "monitoring": {
+    "intervals": {
+      "healthCheck": 300000,
+      "quotaCheck": 900000,
+      "securityCheck": 600000
+    },
+    "thresholds": {
+      "responseTime": 5000,
+      "errorRate": 0.05,
+      "connectionThreshold": 80,
+      "storageThreshold": 0.85,
+      "bandwidthThreshold": 0.90
+    },
+    "alerts": {
+      "logToConsole": true,
+      "saveToFile": true,
+      "webhookUrl": null,
+      "maxStoredAlerts": 1000
+    },
+    "checks": {
+      "database": {
+        "enabled": true,
+        "tables": ["quotes", "media_assets"],
+        "timeout": 10000
+      },
+      "auth": {
+        "enabled": true,
+        "timeout": 5000
+      },
+      "storage": {
+        "enabled": true,
+        "timeout": 5000
+      },
+      "performance": {
+        "enabled": true,
+        "queryTimeout": 5000,
+        "sampleQueries": [
+          "SELECT COUNT(*) FROM quotes",
+          "SELECT id, text FROM quotes LIMIT 10"
+        ]
+      }
+    }
+  },
+  "webhooks": {
+    "endpoints": {
+      "alerts": "/api/monitoring/webhooks",
+      "status": "/api/monitoring/status"
+    },
+    "security": {
+      "requireSignature": false,
+      "allowedIPs": [],
+      "rateLimit": {
+        "maxRequests": 100,
+        "windowMs": 900000
+      }
+    }
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "directory": "./logs",
+    "maxFiles": 30,
+    "maxSize": "10MB"
+  }
+}
