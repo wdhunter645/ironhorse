@@ -1,0 +1,77 @@
+name: "Security Comprehensive Scan"
+
+on:
+  schedule:
+    # Run comprehensive security scan daily at 3:00 AM UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  comprehensive-security:
+    name: Comprehensive Security Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run npm audit
+      run: |
+        echo "🔍 Running npm security audit..."
+        npm audit --audit-level=moderate || true
+        
+    - name: Check for known vulnerabilities
+      run: |
+        echo "🔍 Checking for known vulnerabilities..."
+        npx audit-ci --config /dev/null || true
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: javascript-typescript
+        build-mode: none
+        # Use all available query suites for maximum coverage
+        queries: +security-and-quality,+security-extended
+
+    - name: Build application
+      run: npm run build
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "comprehensive-scan"
+
+    - name: Check for exposed secrets (additional patterns)
+      run: |
+        echo "🔍 Checking for potential secrets in code..."
+        # Check for common secret patterns that might not be caught
+        if grep -r -i --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" \
+          -E "(password|secret|key|token).*=.*['\"][^'\"]{20,}" . || true; then
+          echo "⚠️  Found potential hardcoded secrets - please review"
+        else
+          echo "✅ No obvious hardcoded secrets found"
+        fi
+
+    - name: Security summary
+      run: |
+        echo "🛡️ Security Scan Complete"
+        echo "✅ CodeQL analysis completed"
+        echo "✅ Dependency audit completed"
+        echo "✅ Secret pattern check completed"
+        echo ""
+        echo "📊 View detailed results in the Security tab of your repository"

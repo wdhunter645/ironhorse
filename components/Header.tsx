@@ -9,7 +9,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           {/* Optional logo in /public/logo.svg */}
           <div className="hidden sm:block">
-            <Image src="/logo.svg" alt="LGFC" width={32} height={32} priority onError={() => {}}/>
+            <Image src="/logo.svg" alt="LGFC" width={32} height={32} priority />
           </div>
           <Link href="/" className="font-semibold tracking-tight">Lou Gehrig Fan Club</Link>
         </div>
