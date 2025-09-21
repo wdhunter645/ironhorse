@@ -1,2 +1,21 @@
-import './globals.css'
-export const metadata={title:'Lou Gehrig Fan Club',description:'ironhorse – Phase 1'};export default function RootLayout({children}:{children:React.ReactNode}){return(<html lang='en'><body className='min-h-screen'><header className='w-full px-4 py-3 border-b flex items-center justify-between'><a href='/' className='font-bold'>LGFC</a><nav className='flex gap-4 text-sm'><a href='/sitemap'>Sitemap</a><a href='/privacy'>Privacy</a><a href='/terms'>Terms</a></nav></header><main className='max-w-5xl mx-auto p-4'>{children}</main><footer className='w-full border-t mt-8 p-4 text-xs text-center'>© 2025 Lou Gehrig Fan Club • A zero‑profit initiative supporting ALS research.</footer></body></html>);}
+import "./globals.css";
+import type { Metadata } from "next";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Lou Gehrig Fan Club",
+  description: "A zero-profit initiative supporting ALS research.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800 antialiased">
+        <Header />
+        <main className="container mx-auto px-4 py-10">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
