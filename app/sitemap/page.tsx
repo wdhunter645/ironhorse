@@ -1,5 +1,6 @@
 const links = [
   { label: 'Home', href: '/' },
+  { label: 'Weekly Photo Matchup', href: '/weekly' },
   { label: 'Member Area', href: '/member' },
   { label: 'Admin Dashboard', href: '/admin' },
   { label: 'Charities', href: '/charities' },

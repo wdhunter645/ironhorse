@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Page() {
@@ -30,6 +29,7 @@ export default function Page() {
           </div>
         </div>
         {/* Optional hero image: place a file at /public/hero.jpg to display it */}
+        {/* Hero image temporarily disabled until image is provided
         <div className="absolute right-0 top-0 hidden md:block">
           <Image
             src="/hero.jpg"
@@ -40,6 +40,7 @@ export default function Page() {
             priority
           />
         </div>
+        */}
       </section>
 
       <section>
