@@ -1,0 +1,59 @@
+name: "CodeQL Security Analysis"
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    # Run CodeQL analysis weekly on Sundays at 2:00 AM UTC
+    - cron: '0 2 * * 0'
+
+jobs:
+  analyze:
+    name: Analyze Code
+    runs-on: ubuntu-latest
+    permissions:
+      # Required for CodeQL to upload results to GitHub
+      security-events: write
+      # Required to fetch private repositories
+      contents: read
+      # Optional: for private repositories, may be required
+      actions: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript-typescript' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        # Build mode: none (for interpreted languages like JavaScript/TypeScript)
+        # autobuild (for compiled languages) 
+        # manual (for custom build steps)
+        build-mode: none
+        # Optional: specify additional queries
+        queries: security-extended,security-and-quality
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build application
+      run: npm run build
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
