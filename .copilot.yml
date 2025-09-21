@@ -1,0 +1,35 @@
+# GitHub Copilot Configuration for ironhorse repository
+# This file configures GitHub Copilot to work more autonomously on assigned tasks
+
+# Auto-approval for assigned tasks
+auto_approval_enabled: true
+
+# Tasks that can be completed without explicit approval
+allowed_auto_tasks:
+  - code_generation
+  - file_creation
+  - file_modification
+  - bug_fixes
+  - feature_implementation
+  - test_creation
+  - documentation_updates
+
+# Tasks that still require approval
+approval_required_tasks:
+  - dependency_changes
+  - configuration_changes  
+  - security_related_changes
+  - deployment_modifications
+
+# Workflow settings
+workflow_settings:
+  auto_execute_assigned_tasks: true
+  provide_status_updates_on_completion: true
+  allow_clarifying_questions: true
+  max_autonomous_changes: 10
+
+# Communication preferences
+communication:
+  completion_notifications: true
+  error_notifications: true
+  progress_updates: true
