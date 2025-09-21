@@ -7,7 +7,8 @@ export default function Page() {
     { href: "/member", title: "Fan Club Card + Join/Login" },
     { href: "/charities", title: "Charities" },
     { href: "/milestones", title: "Milestones" },
-    { href: "/news", title: "Q&A + News" },
+    { href: "/news", title: "News" },
+    { href: "/qna", title: "Q&A" },
     { href: "/calendar", title: "Unified Calendar" },
   ];
 
@@ -37,7 +38,6 @@ export default function Page() {
             height={400}
             className="rounded-l-3xl"
             priority
-            onError={() => {}}
           />
         </div>
       </section>

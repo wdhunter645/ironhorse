@@ -18,6 +18,7 @@ export function Header() {
           <Link href="/charities" className="hover:text-blue-600">Charities</Link>
           <Link href="/milestones" className="hover:text-blue-600">Milestones</Link>
           <Link href="/news" className="hover:text-blue-600">News</Link>
+          <Link href="/qna" className="hover:text-blue-600">Q&A</Link>
           <Link href="/calendar" className="hover:text-blue-600">Calendar</Link>
           <Link href="/privacy" className="hover:text-blue-600">Privacy</Link>
         </nav>
