@@ -1,1 +1,8 @@
-export default function Admin(){return(<section className='space-y-3'><h1 className='text-2xl font-semibold'>Admin Dashboard (stub)</h1><p>Codex: implement moderation queues, reports, logs, and schedule view per DESIGN_PER_PAGE.md.</p></section>);}
+export default function Admin() { 
+  return (
+    <div className="prose">
+      <h1>Admin Dashboard (stub)</h1>
+      <p>Codex: implement moderation queues, reports, logs, and schedule view per DESIGN_PER_PAGE.md.</p>
+    </div>
+  ); 
+}
