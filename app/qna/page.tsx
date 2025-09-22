@@ -1,1 +1,1 @@
-export default function Page() { return <div className="prose"><h1>Q&A - Coming soon</h1></div>; }
+export default function Page() { return <div className="prose"><h1>Q&A / FAQ</h1><p>Coming soon.</p></div>; }

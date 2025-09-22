@@ -1,15 +1,12 @@
-import { NextResponse } from 'next/server';
-
-const QUOTES = [
-  'Today I consider myself the luckiest man on the face of the Earth.',
-  'There is no room in baseball for discrimination. It is our national pastime and a game for all.',
-  'I might have been given a bad break, but I\'ve got an awful lot to live for.'
-];
-
 export async function GET() {
-  const i = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000)) % QUOTES.length;
-  return NextResponse.json({ 
-    quote: QUOTES[i],
-    source: "fallback"
+  const payload = {
+    week: "2025-09-22",
+    quotes: [
+      { text: "I love to win, but I love to play the game more.", source: "Lou Gehrig" },
+      { text: "When you have a lot to lose, you fight harder.", source: "Lou Gehrig" }
+    ]
+  };
+  return new Response(JSON.stringify(payload), {
+    headers: { "content-type": "application/json" },
   });
 }
