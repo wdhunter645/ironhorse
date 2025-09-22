@@ -1,0 +1,1 @@
+export default function Page() { return <div className="prose"><h1>Charities - Coming soon</h1></div>; }
