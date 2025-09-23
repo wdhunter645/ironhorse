@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AuthButton from "@/components/AuthButton";
 
 export const metadata: Metadata = {
   title: "Lou Gehrig Fan Club",
@@ -18,7 +19,8 @@ a{color:inherit;text-decoration:none}
 .site-header{position:sticky;top:0;background:rgba(15,17,22,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:20}
 .site-header .bar{height:64px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-weight:700;letter-spacing:.4px}
-.nav a{margin-left:18px;opacity:.9}
+.nav{display:flex;align-items:center;gap:18px}
+.nav a{opacity:.9}
 .nav a:hover{opacity:1}
 
 /* hero */
@@ -40,6 +42,13 @@ a{color:inherit;text-decoration:none}
 /* footer */
 .site-footer{border-top:1px solid var(--line);margin-top:36px}
 .site-footer .inner{padding:16px 0;color:var(--muted);text-align:center}
+
+/* prose styles */
+.prose{max-width:none}
+.prose h1{font-size:32px;margin:0 0 16px}
+.prose h2{font-size:24px;margin:24px 0 12px}
+.prose h3{font-size:20px;margin:20px 0 8px}
+.prose p{margin:0 0 16px}
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -51,14 +60,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container bar">
             <a href="/" className="logo">Lou Gehrig Fan Club</a>
             <nav className="nav">
-              <a href="/member">Join</a>
+              <a href="/weekly">Weekly</a>
+              <a href="/member">Member</a>
               <a href="/charities">Charities</a>
               <a href="/milestones">Milestones</a>
               <a href="/qna">Q&amp;A</a>
               <a href="/news">News</a>
               <a href="/calendar">Calendar</a>
-              <a href="/privacy">Privacy</a>
-              <a href="/terms">Terms</a>
+              <a href="/admin">Admin</a>
+              <AuthButton />
             </nav>
           </div>
         </header>
