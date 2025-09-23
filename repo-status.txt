@@ -1,0 +1,94 @@
+=== IRONHORSE STATUS (2025-09-23 15:56:17 UTC) ===
+
+[git] branch & last 10 commits
+copilot/fix-b386b8f8-d709-4c2e-8cbd-406ffa3e173f
+ef24d00 Initial plan
+13ebdf0 chore: add repo status audit script
+
+[git] working tree
+?? repo-status.txt
+
+[tree] top-level app folders (root)
+total 344
+drwxr-xr-x 14 runner runner   4096 Sep 23 15:56 .
+drwxr-xr-x  3 runner runner   4096 Sep 23 15:55 ..
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 .backups
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 .devcontainer
+-rw-rw-r--  1 runner runner    110 Sep 23 15:55 .env.example
+-rw-rw-r--  1 runner runner    138 Sep 23 15:55 .eslintrc.json
+drwxrwxr-x  7 runner runner   4096 Sep 23 15:56 .git
+drwxrwxr-x  3 runner runner   4096 Sep 23 15:55 .github
+-rw-rw-r--  1 runner runner    523 Sep 23 15:55 .gitignore
+drwxrwxr-x  3 runner runner   4096 Sep 23 15:55 .next
+-rw-rw-r--  1 runner runner      3 Sep 23 15:55 .nvmrc
+-rw-rw-r--  1 runner runner   1654 Sep 23 15:55 DEPLOYMENT.md
+-rw-rw-r--  1 runner runner   1088 Sep 23 15:55 LICENSE
+-rw-rw-r--  1 runner runner    599 Sep 23 15:55 Makefile
+-rw-rw-r--  1 runner runner   1220 Sep 23 15:55 README-DEPLOY.md
+drwxrwxr-x 14 runner runner   4096 Sep 23 15:55 app
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 components
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 docs
+-rw-rw-r--  1 runner runner    316 Sep 23 15:55 env.sample
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 ironhorse
+-rw-rw-r--  1 runner runner  19657 Sep 23 15:55 ironhorse_phase3_phase4_drop.zip
+-rw-rw-r--  1 runner runner    250 Sep 23 15:55 ironhorse_phase_pack.zip
+-rw-rw-r--  1 runner runner    262 Sep 23 15:55 next-env.d.ts
+-rw-rw-r--  1 runner runner    216 Sep 23 15:55 next.config.js
+-rw-rw-r--  1 runner runner     19 Sep 23 15:55 next.config.ts
+-rw-rw-r--  1 runner runner 186281 Sep 23 15:55 package-lock.json
+-rw-rw-r--  1 runner runner    510 Sep 23 15:55 package.json
+-rw-rw-r--  1 runner runner    721 Sep 23 15:55 package.json.bak.1758392930
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 public
+-rw-rw-r--  1 runner runner   2275 Sep 23 15:55 repo-status.sh
+-rw-rw-r--  1 runner runner    273 Sep 23 15:56 repo-status.txt
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 scripts
+drwxrwxr-x  2 runner runner   4096 Sep 23 15:55 sql
+-rw-rw-r--  1 runner runner    744 Sep 23 15:55 tsconfig.json
+-rw-rw-r--  1 runner runner   1211 Sep 23 15:55 tsconfig.json.bak.1758408130
+-rw-rw-r--  1 runner runner    677 Sep 23 15:55 tsconfig.json.bak.1758408843
+-rw-rw-r--  1 runner runner    158 Sep 23 15:55 vercel.json
+
+[tree] app structure
+app/admin/page.tsx
+app/calendar/page.tsx
+app/charities/page.tsx
+app/member/page.tsx
+app/milestones/page.tsx
+app/news/page.tsx
+app/page.tsx
+app/privacy/page.tsx
+app/qna/page.tsx
+app/terms/page.tsx
+app/weekly/page.tsx
+app/layout.tsx
+
+[dup-check] ironhorse subtree (should be gone)
+
+[layout] check for embedded CSS guardrail
+OK: embedded CSS present in app/layout.tsx
+
+[public routes] expected Phase-4 pages
+OK: app/weekly/page.tsx
+OK: app/member/page.tsx
+OK: app/charities/page.tsx
+OK: app/milestones/page.tsx
+OK: app/qna/page.tsx
+OK: app/news/page.tsx
+OK: app/calendar/page.tsx
+OK: app/privacy/page.tsx
+OK: app/terms/page.tsx
+
+[apis] expected endpoints
+OK: /api/ok
+OK: /api/quotes/weekly
+
+[auth/admin] gating presence
+MISSING: middleware.ts
+@supabase/supabase-js not in package.json
+@aws-sdk/client-s3 not in package.json
+
+[next] config sanity
+next.config.ts present
+tsconfig.json present
+
+=== END ===
