@@ -37,7 +37,6 @@ export default function Page() {
             height={400}
             className="rounded-l-3xl"
             priority
-            onError={() => {}}
           />
         </div>
       </section>
