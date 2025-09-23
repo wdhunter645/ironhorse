@@ -43,14 +43,10 @@ temp/
 
 # TypeScript build info
 *.tsbuildinfo
-# Node / Next
-node_modules
-.next
-out
-dist
-.vercel
-# OS / editor
-.DS_Store
-# Env
-.env
-.env.*
+
+# ZIP files
+*.zip
+
+# Backups
+*.bak
+*.bak.*
