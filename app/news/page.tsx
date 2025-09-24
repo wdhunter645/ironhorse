@@ -30,7 +30,7 @@ export default async function NewsPage() {
         </div>
       ) : (
         <div style={{ display: 'grid', gap: 20 }}>
-          {posts.map((post) => (
+          {posts.map((post: any) => (
             <article
               key={post.id}
               style={{

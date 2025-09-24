@@ -29,7 +29,7 @@ export default async function CharitiesPage() {
         </div>
       ) : (
         <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
-          {charities.map((charity) => (
+          {charities.map((charity: any) => (
             <div
               key={charity.id}
               style={{

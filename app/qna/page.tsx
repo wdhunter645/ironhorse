@@ -30,7 +30,7 @@ export default async function QnAPage() {
         </div>
       ) : (
         <div style={{ display: 'grid', gap: 16 }}>
-          {posts.map((post) => (
+          {posts.map((post: any) => (
             <details
               key={post.id}
               style={{

@@ -14,8 +14,8 @@ export default async function CalendarPage() {
 
   // Separate upcoming and past events
   const now = new Date();
-  const upcomingEvents = events?.filter(event => new Date(event.starts_at) >= now) || [];
-  const pastEvents = events?.filter(event => new Date(event.starts_at) < now) || [];
+  const upcomingEvents = events?.filter((event: any) => new Date(event.starts_at) >= now) || [];
+  const pastEvents = events?.filter((event: any) => new Date(event.starts_at) < now) || [];
 
   return (
     <div className="prose">
@@ -37,7 +37,7 @@ export default async function CalendarPage() {
           </div>
         ) : (
           <div style={{ display: 'grid', gap: 16 }}>
-            {upcomingEvents.map((event) => (
+            {upcomingEvents.map((event: any) => (
               <div
                 key={event.id}
                 style={{
@@ -121,7 +121,7 @@ export default async function CalendarPage() {
         <section>
           <h2>Past Events</h2>
           <div style={{ display: 'grid', gap: 12 }}>
-            {pastEvents.map((event) => (
+            {pastEvents.map((event: any) => (
               <div
                 key={event.id}
                 style={{

@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const counts = voteCounts.reduce((acc, vote) => {
+    const counts = voteCounts.reduce((acc: any, vote: any) => {
       const choice = vote.choice as 'A' | 'B';
       acc[choice] = (acc[choice] || 0) + 1;
       return acc;
