@@ -1,0 +1,122 @@
+=== IRONHORSE STATUS (2025-09-23 15:43:46 UTC) ===
+
+[git] branch & last 10 commits
+main
+0005edc catching up on changes
+1a6fa38 fix(ui): embed global CSS in layout and ship styled home + Phase-4 stubs (no Tailwind)
+9952347 Merge pull request #47 from wdhunter645/copilot/fix-5457ce3d-9cd5-4323-9483-78f38b1241f8
+fad4c18 feat: Complete Phase 3 & 4 implementation with minor styling fixes
+a022dec Initial plan
+bd24c39 Merge pull request #46 from wdhunter645/copilot/fix-729e4e84-59c9-484c-8ef7-55c4fa25b51c
+8f2d69a feat(ui): Remove temp files and finalize Phase 3/4 implementation
+bc42704 feat(ui): Phase 3/4 drop-in — styled shell, routes, APIs
+66407b6 Initial plan
+8ef6ff1 Add files via upload
+
+[git] working tree
+?? repo-status.txt
+
+[tree] top-level app folders (root)
+total 352
+drwxrwxrwx+  15 node root   4096 Sep 23 15:43 .
+drwxr-xrwx+   5 node root   4096 Sep 14 21:20 ..
+drwxrwxrwx+  14 node node   4096 Sep 23 15:09 app
+drwxrwxrwx+   2 node node   4096 Sep 22 14:05 .backups
+drwxrwxrwx+   2 node node   4096 Sep 23 15:09 components
+-rw-rw-rw-    1 node node   1654 Sep 20 17:44 DEPLOYMENT.md
+drwxrwxrwx+   2 node node   4096 Sep 20 17:44 .devcontainer
+drwxrwxrwx+   2 node node   4096 Sep 14 21:20 docs
+-rw-rw-rw-    1 node node    110 Sep 20 17:44 .env.example
+-rw-rw-rw-    1 node node    316 Sep 20 17:44 env.sample
+-rw-rw-rw-    1 node node    138 Sep 20 17:44 .eslintrc.json
+drwxrwxrwx+   8 node root   4096 Sep 23 15:43 .git
+drwxrwxrwx+   3 node node   4096 Sep 20 17:44 .github
+-rw-rw-rw-    1 node node    523 Sep 20 18:28 .gitignore
+drwxrwxrwx+   9 node node   4096 Sep 15 14:14 ironhorse
+-rw-rw-rw-    1 node node  19657 Sep 23 15:09 ironhorse_phase3_phase4_drop.zip
+-rw-rw-rw-    1 node node    250 Sep 16 20:26 ironhorse_phase_pack.zip
+-rw-rw-rw-    1 node node   1088 Sep 17 10:43 LICENSE
+-rw-rw-rw-    1 node node    599 Sep 20 17:44 Makefile
+drwxrwxrwx+   7 node node   4096 Sep 20 23:02 .next
+-rw-rw-rw-    1 node node    216 Sep 16 20:26 next.config.js
+-rw-rw-rw-    1 node node     19 Sep 23 15:09 next.config.ts
+-rw-rw-rw-    1 node node    262 Sep 20 22:54 next-env.d.ts
+drwxrwxrwx+ 326 node node  12288 Sep 21 14:09 node_modules
+-rw-rw-rw-    1 node node      3 Sep 21 00:05 .nvmrc
+-rw-rw-rw-    1 node node    510 Sep 23 15:09 package.json
+-rw-rw-rw-    1 node node    721 Sep 20 18:28 package.json.bak.1758392930
+-rw-rw-rw-    1 node node 186281 Sep 23 15:09 package-lock.json
+drwxrwxrwx+   2 node node   4096 Sep 23 15:09 public
+-rw-rw-rw-    1 node node   1220 Sep 23 15:09 README-DEPLOY.md
+-rw-rw-rw-    1 node node    771 Sep 23 15:43 repo-status.txt
+drwxrwxrwx+   2 node node   4096 Sep 20 17:44 scripts
+drwxrwxrwx+   2 node node   4096 Sep 14 21:20 sql
+-rw-rw-rw-    1 node node    744 Sep 23 15:09 tsconfig.json
+-rw-rw-rw-    1 node node   1211 Sep 20 22:42 tsconfig.json.bak.1758408130
+-rw-rw-rw-    1 node node    677 Sep 20 22:54 tsconfig.json.bak.1758408843
+-rw-rw-rw-    1 node node    158 Sep 16 20:26 vercel.json
+
+[tree] app structure
+app/admin/page.tsx
+app/calendar/page.tsx
+app/charities/page.tsx
+app/member/page.tsx
+app/milestones/page.tsx
+app/news/page.tsx
+app/page.tsx
+app/privacy/page.tsx
+app/qna/page.tsx
+app/terms/page.tsx
+app/weekly/page.tsx
+app/layout.tsx
+
+[dup-check] ironhorse subtree (should be gone)
+ironhorse/Makefile
+ironhorse/index.html
+ironhorse/env.sample
+ironhorse/README.md
+ironhorse/styles.css
+ironhorse/docs/DESIGN_PER_PAGE.md
+ironhorse/docs/CODEX_BRIEF.md
+ironhorse/ironhorse-phase1/.gitignore
+ironhorse/.git/logs/HEAD
+ironhorse/.git/config
+ironhorse/.git/HEAD
+ironhorse/.git/info/exclude
+ironhorse/.git/description
+ironhorse/.git/packed-refs
+ironhorse/.git/hooks/sendemail-validate.sample
+ironhorse/.git/hooks/fsmonitor-watchman.sample
+ironhorse/.git/hooks/pre-push.sample
+ironhorse/.git/hooks/pre-commit.sample
+ironhorse/.git/hooks/pre-applypatch.sample
+ironhorse/.git/hooks/pre-merge-commit.sample
+
+[layout] check for embedded CSS guardrail
+OK: embedded CSS present in app/layout.tsx
+
+[public routes] expected Phase-4 pages
+OK: app/weekly/page.tsx
+OK: app/member/page.tsx
+OK: app/charities/page.tsx
+OK: app/milestones/page.tsx
+OK: app/qna/page.tsx
+OK: app/news/page.tsx
+OK: app/calendar/page.tsx
+OK: app/privacy/page.tsx
+OK: app/terms/page.tsx
+
+[apis] expected endpoints
+OK: /api/ok
+OK: /api/quotes/weekly
+
+[auth/admin] gating presence
+MISSING: middleware.ts
+@supabase/supabase-js not in package.json
+@aws-sdk/client-s3 not in package.json
+
+[next] config sanity
+next.config.ts present
+tsconfig.json present
+
+=== END ===
