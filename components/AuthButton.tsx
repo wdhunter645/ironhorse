@@ -19,7 +19,7 @@ export default function AuthButton() {
     getUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      (event: any, session: any) => {
         setUser(session?.user || null);
       }
     );

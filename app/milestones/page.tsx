@@ -29,7 +29,7 @@ export default async function MilestonesPage() {
         </div>
       ) : (
         <div style={{ display: 'grid', gap: 20 }}>
-          {milestones.map((milestone) => (
+          {milestones.map((milestone: any) => (
             <div
               key={milestone.id}
               style={{

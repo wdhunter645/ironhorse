@@ -40,7 +40,7 @@ export default async function PostsPage() {
         </div>
       ) : (
         <div style={{ display: 'grid', gap: 12 }}>
-          {posts.map((post) => (
+          {posts.map((post: any) => (
             <div
               key={post.id}
               style={{

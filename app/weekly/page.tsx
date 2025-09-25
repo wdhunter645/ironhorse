@@ -82,7 +82,7 @@ export default function WeeklyPage() {
           .eq('matchup_id', activeMatchup.id);
 
         if (votes) {
-          const voteCounts = votes.reduce((acc, vote) => {
+          const voteCounts = votes.reduce((acc: any, vote: any) => {
             const choice = vote.choice as 'A' | 'B';
             acc[choice] = (acc[choice] || 0) + 1;
             return acc;

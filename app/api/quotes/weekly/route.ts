@@ -31,10 +31,10 @@ export async function GET(request: Request) {
     }
 
     // Map and normalize column names (support both text/quote_text and source/attribution)
-    const normalizedQuotes = (quotes || []).map(quote => ({
+    const normalizedQuotes = (quotes || []).map((quote: any) => ({
       text: quote.text || quote.quote_text || '',
       source: quote.source || quote.attribution || ''
-    })).filter(quote => quote.text); // Filter out empty quotes
+    })).filter((quote: any) => quote.text); // Filter out empty quotes
 
     return Response.json({
       week: week || new Date().toISOString().split('T')[0],
