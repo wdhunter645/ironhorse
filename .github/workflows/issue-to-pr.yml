@@ -1,1 +1,120 @@
-'"$@"'
+name: Issue → PR (autopilot)
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Issue number to convert to a PR"
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  extract-and-pr:
+    runs-on: ubuntu-latest
+    # Run if manually dispatched OR if the issue has/gets the auto-apply label
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && (
+        (github.event.action == 'labeled' && github.event.label.name == 'auto-apply') ||
+        contains(toJson(github.event.issue.labels), 'auto-apply')
+      ))
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Load issue (supports manual dispatch)
+        id: load
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.eventName === 'workflow_dispatch'
+              ? Number(core.getInput('issue_number'))
+              : context.payload.issue.number;
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number
+            });
+            core.setOutput('number', issue_number);
+            core.setOutput('body', issue.body || '');
+
+      - name: Extract patch
+        id: extract
+        run: |
+          BODY=${{ steps.load.outputs.body }}
+          python - <<'PY'
+import os, sys, re
+body = os.environ['BODY']
+m = re.search(r'\*\*\*\s*BEGIN PATCH(.*?)\*\*\*\s*END PATCH', body, re.S)
+if not m:
+    print("No patch block found", file=sys.stderr); sys.exit(1)
+open('.autopatch.txt','w').write(m.group(1).strip())
+PY
+
+      - name: Prepare branch
+        id: vars
+        run: |
+          BRANCH="auto/${{ steps.load.outputs.number }}-$(date +%Y%m%d-%H%M%S)"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          git config user.name "ironhorse-bot"
+          git config user.email "bot@users.noreply.github.com"
+
+      - name: Apply patch
+        run: |
+          git switch -c "${{ steps.vars.outputs.branch }}"
+          # Create directories for any *** ADD FILE paths
+          grep -E '^\*\*\* ADD FILE: ' .autopatch.txt | sed 's/^\*\*\* ADD FILE: //' | xargs -I{} bash -lc 'mkdir -p "$(dirname "{}")"' || true
+          # Write ADD FILE contents and collect any unified diff
+          awk '
+            BEGIN{ add=0 }
+            /^\*\*\* ADD FILE: / { add=1; file=substr($0,16); print "" > file; next }
+            add==1 && !/^\*\*\* END PATCH$/ { print $0 >> file; next }
+            /^\*\*\* END PATCH$/ { add=0; next }
+            { print $0 >> ".autopatch.diff" }
+          ' .autopatch.txt
+          if [ -s .autopatch.diff ]; then
+            git apply --whitespace=fix .autopatch.diff || { echo "git apply failed"; cat .autopatch.diff; exit 1; }
+          fi
+          git add -A
+          git commit -m "Autopilot: apply patch from issue #${{ steps.load.outputs.number }}" || echo "No changes to commit"
+
+      - name: Build check
+        uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile || npm ci
+      - run: pnpm -s build || npm run build
+
+      - name: Push branch
+        run: git push origin "${{ steps.vars.outputs.branch }}"
+
+      - name: Open PR
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "Autopilot PR from Issue #${{ steps.load.outputs.number }}"
+          body: "Generated from Issue #${{ steps.load.outputs.number }}"
+          base: main
+          head: "${{ steps.vars.outputs.branch }}"
+
+      - name: Comment back on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: Number("${{ steps.load.outputs.number }}"),
+              body: `Opened PR #${{ steps.cpr.outputs['pull-request-number'] }} from this design.`
+            });
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: Number("${{ steps.load.outputs.number }}"),
+              labels: ['in-progress']
+            });
