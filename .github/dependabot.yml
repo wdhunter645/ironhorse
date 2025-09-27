@@ -1,0 +1,58 @@
+# Dependabot configuration for automated dependency updates and security alerts
+# This file configures daily dependency checks and automatic security updates
+
+version: 2
+updates:
+  # Enable npm dependency updates for Node.js packages
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+      timezone: "America/New_York"
+    # Security updates and dependency management
+    open-pull-requests-limit: 10
+    target-branch: "main"
+    reviewers:
+      - "wdhunter645"
+    commit-message:
+      prefix: "npm"
+      prefix-development: "npm-dev"
+      include: "scope"
+    # Enable automatic security updates
+    allow:
+      - dependency-type: "all"
+    # Group related dependency updates
+    groups:
+      production-dependencies:
+        patterns:
+          - "next"
+          - "react*"
+        exclude-patterns:
+          - "@types/*"
+      development-dependencies:
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "typescript"
+          - "tailwindcss"
+          - "autoprefixer"
+          - "postcss"
+
+  # Enable GitHub Actions updates for workflow dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    reviewers:
+      - "wdhunter645"
+    commit-message:
+      prefix: "actions"
+      include: "scope"
+    # Enable automatic security updates for actions
+    allow:
+      - dependency-type: "all"
