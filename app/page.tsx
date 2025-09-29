@@ -1,23 +1,28 @@
-export default function Home() {
+export default function Page() {
   return (
-    <>
-      <section className="hero">
-        <img src="/hero.jpg" alt="" className="hero-img" />
-        <div className="hero-inner">
-          <h1>Lou Gehrig Fan Club</h1>
-          <p>Celebrate the Iron Horse with photos, stories, milestones, and community events.</p>
-          <a className="btn" href="/member">Join the Club</a>
-        </div>
-      </section>
-
-      <section className="grid">
-        <a className="card" href="/weekly"><img src="/weekly.jpg" alt="" /><span>Weekly Photo Matchup</span></a>
-        <a className="card" href="/member"><img src="/join.jpg" alt="" /><span>Fan Card + Join/Login</span></a>
-        <a className="card" href="/charities"><img src="/charities.jpg" alt="" /><span>Donations & Charities</span></a>
-        <a className="card" href="/milestones"><img src="/milestones.jpg" alt="" /><span>Milestones</span></a>
-        <a className="card" href="/news"><img src="/news.jpg" alt="" /><span>News & Q&A</span></a>
-        <a className="card" href="/calendar"><img src="/calendar.jpg" alt="" /><span>Unified Calendar</span></a>
-      </section>
-    </>
+    <section style={{ display: "grid", gap: 12 }}>
+      <h1 style={{ fontSize: 28, margin: 0 }}>ironhorse ✅</h1>
+      <p style={{ margin: 0 }}>
+        Build healthy. Env: {process.env.NEXT_PUBLIC_SITE_URL ?? "not set"}
+      </p>
+      <div style={{
+        marginTop: 12,
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gap: 12
+      }}>
+        <a href="/placeholders" style={card}>View placeholders</a>
+        <a href="/api/health" style={card}>API health</a>
+      </div>
+    </section>
   );
 }
+
+const card: React.CSSProperties = {
+  display: "block",
+  padding: 16,
+  border: "1px solid #eee",
+  borderRadius: 12,
+  color: "#0f62fe",
+  textDecoration: "none",
+};
