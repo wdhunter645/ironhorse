@@ -49,6 +49,21 @@ Set GitHub repository secrets for CI/CD:
 bash scripts/set_repo_secrets_improved.sh
 ```
 
+### Automated Dependency Management
+
+This repository is configured with **GitHub Dependabot** for automated dependency updates and security alerts:
+
+- **Daily dependency checks** for npm packages and GitHub Actions
+- **Automatic security updates** for vulnerabilities
+- **Grouped pull requests** for related dependencies
+- **Configuration**: See [docs/DEPENDABOT.md](docs/DEPENDABOT.md) for details
+- **Validation**: Run `make validate-dependabot` to check configuration
+
+Dependabot will automatically create pull requests for:
+- Security vulnerabilities (immediate)
+- Outdated dependencies (daily at 6:00 AM EST)
+- GitHub Actions updates (daily at 6:00 AM EST)
+
 ### Benefits of Production-Only Deployment
 
 - **Simplified Configuration**: Single environment to manage
