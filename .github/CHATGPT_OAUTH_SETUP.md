@@ -164,7 +164,7 @@ If ChatGPT doesn't appear on the OAuth Apps tab:
 3. **Verify installation** - Confirm ChatGPT Codex Connector is installed at the organization level
 4. **Run the setup workflow** - Trigger the ChatGPT OAuth workflow manually:
    - Go to **Actions** tab → **ChatGPT OAuth Integration** → **Run workflow**
-5. **Check workflow logs** for any errors (see section above)
+5. **Check workflow logs** for any errors (see Verifying OAuth Installation section above)
 
 ### Common OAuth Configuration Issues
 
