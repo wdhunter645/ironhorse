@@ -7,14 +7,12 @@
   "redirect_url": "https://chatgpt.com/auth/callback",
   "callback_urls": [
     "https://chatgpt.com/auth/callback",
-    "https://chatgpt.com/oauth/callback",
-    "https://chat.openai.com/auth/callback",
-    "https://chat.openai.com/oauth/callback"
+    "https://chatgpt.com/oauth/callback"
   ],
   "request_oauth_on_install": true,
   "setup_on_update": true,
   "description": "Enables ChatGPT to interact with GitHub repositories for code assistance",
-  "public": false,
+  "public": true,
   "default_events": [
     "issues",
     "pull_request",
