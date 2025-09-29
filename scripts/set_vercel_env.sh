@@ -1,28 +1,44 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Updated to consolidate all deployments to production environment only
+# Updated to copy GitHub repository secrets to Vercel environment variables
 # This ensures both dev and prod websites run in the production environment
+# and use the same secrets stored in GitHub repository
 
-# Function to check and confirm environment variables before adding to Vercel
-check_env_var() {
+# Check for required CLI tools
+if ! command -v gh &> /dev/null; then
+    echo "❌ GitHub CLI (gh) is not installed or not in PATH"
+    echo "   Install from: https://cli.github.com/"
+    exit 1
+fi
+
+if ! command -v vercel &> /dev/null; then
+    echo "❌ Vercel CLI is not installed or not in PATH"
+    echo "   Install with: npm install -g vercel"
+    exit 1
+fi
+
+# Function to check and get repository secret
+check_repo_secret() {
     local k=$1
-    local v="${!k:-}"
+    local v
+    v=$(gh secret get "$k" 2>/dev/null || echo "")
     if [ -z "$v" ]; then
-        echo "❌ Missing environment variable: $k"
+        echo "❌ Missing repository secret: $k"
         return 1
     else
-        echo "✅ Found environment variable: $k"
+        echo "✅ Found repository secret: $k"
         return 0
     fi
 }
 
-# Function to add environment variable to production environment only
+# Function to add repository secret to Vercel production environment
 add() {
     local k=$1
-    local v="${!k:-}"
+    local v
+    v=$(gh secret get "$k" 2>/dev/null || echo "")
     if [ -z "$v" ]; then
-        echo "⚠️  Skipping $k (not set)"
+        echo "⚠️  Skipping $k (repository secret not found)"
         return 0
     fi
     echo "🔧 Setting $k in Vercel production environment..."
@@ -34,56 +50,56 @@ add() {
     fi
 }
 
-# Check all required environment variables first
-echo "🔍 Checking required environment variables..."
-MISSING_VARS=0
+# Check all required repository secrets first
+echo "🔍 Checking repository secrets..."
+MISSING_SECRETS=0
 
 # Define all required variables
 PUBLIC_VARS="NEXT_PUBLIC_SUPABASE_URL NEXT_PUBLIC_SUPABASE_ANON_KEY NEXT_PUBLIC_B2_ENDPOINT NEXT_PUBLIC_B2_BUCKET"
 PRIVATE_VARS="SUPABASE_SERVICE_ROLE_KEY B2_KEY_ID B2_APP_KEY"
 
-# Check public environment variables
+# Check public repository secrets
 for k in $PUBLIC_VARS; do
-    if ! check_env_var $k; then
-        MISSING_VARS=1
+    if ! check_repo_secret "$k"; then
+        MISSING_SECRETS=1
     fi
 done
 
-# Check private environment variables  
+# Check private repository secrets  
 for k in $PRIVATE_VARS; do
-    if ! check_env_var $k; then
-        MISSING_VARS=1
+    if ! check_repo_secret "$k"; then
+        MISSING_SECRETS=1
     fi
 done
 
-if [ $MISSING_VARS -eq 1 ]; then
+if [ $MISSING_SECRETS -eq 1 ]; then
     echo ""
-    echo "❌ Some environment variables are missing. Please set them before running this script."
-    echo "   You can set them in your shell environment or in a .env file"
-    echo "   Required variables: $PUBLIC_VARS $PRIVATE_VARS"
+    echo "❌ Some repository secrets are missing. Please set them before running this script."
+    echo "   You can set them using: gh secret set VARIABLE_NAME"
+    echo "   Required secrets: $PUBLIC_VARS $PRIVATE_VARS"
     echo ""
-    read -p "Do you want to continue anyway and skip missing variables? (y/N): " -n 1 -r
+    read -p "Do you want to continue anyway and skip missing secrets? (y/N): " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "Exiting. Please set the missing environment variables and try again."
+        echo "Exiting. Please set the missing repository secrets and try again."
         exit 1
     fi
     echo "⚠️  Continuing with partial environment setup..."
 else
-    echo "✅ All environment variables are present!"
+    echo "✅ All repository secrets are present!"
 fi
 
 echo ""
-echo "🚀 Setting environment variables in Vercel production environment..."
+echo "🚀 Copying repository secrets to Vercel production environment..."
 
-# Set public environment variables for production
+# Set public secrets as Vercel environment variables for production
 for k in $PUBLIC_VARS; do
-    add $k
+    add "$k"
 done
 
-# Set private environment variables for production  
+# Set private secrets as Vercel environment variables for production  
 for k in $PRIVATE_VARS; do
-    add $k
+    add "$k"
 done
 
 echo ""
