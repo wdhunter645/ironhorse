@@ -1,0 +1,25 @@
+# ChatGPT OAuth App Configuration
+# Configures the OAuth integration for ChatGPT to appear on authorized apps
+
+oauth_app:
+  name: "ChatGPT"
+  description: "ChatGPT integration for code assistance and repository interaction"
+  homepage_url: "https://chatgpt.com/"
+  authorization_callback_url: "https://chatgpt.com/auth/callback"
+  application_url: "https://chatgpt.com/"
+  
+  # OAuth scopes needed for ChatGPT functionality
+  scopes:
+    - repo
+    - read:user
+    - user:email
+    - read:org
+    - write:discussion
+    - workflow
+    
+  # Public OAuth app (visible on OAuth Apps tab)
+  public: true
+  
+  # Additional configuration
+  request_oauth_on_install: true
+  setup_on_update: true

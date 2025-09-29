@@ -1,0 +1,46 @@
+# GitHub App manifest for ChatGPT Codex Connector
+# This file configures the ChatGPT integration to appear on OAuth Apps tab
+
+name: ChatGPT Codex Connector
+description: Enables ChatGPT to interact with repository issues, pull requests, and code
+url: https://chatgpt.com/
+setup_url: https://chatgpt.com/auth/callback
+setup_on_update: true
+
+default_permissions:
+  contents: write
+  issues: write
+  pull_requests: write
+  metadata: read
+  administration: read
+  actions: read
+  checks: read
+  deployments: read
+  pages: read
+  repository_hooks: read
+  statuses: read
+
+default_events:
+  - issues
+  - pull_request
+  - push
+  - create
+  - delete
+  - deployment
+  - deployment_status
+  - page_build
+  - public
+  - release
+  - repository
+  - status
+  - watch
+
+public: false
+redirect_url: https://chatgpt.com/auth/callback
+
+webhook:
+  active: true
+  events:
+    - issues
+    - pull_request
+    - push

@@ -1,1 +1,45 @@
-'"$@"'
+name: Design Spec (Chat)
+description: Submit a design specification for ChatGPT to implement
+title: "[Design] "
+labels: ["design-spec", "chatgpt"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ChatGPT Design Specification
+        
+        Use this template to submit design specifications that ChatGPT can implement through the OAuth integration.
+        
+        **Note**: ChatGPT OAuth integration has been configured. If ChatGPT doesn't appear on your OAuth Apps tab, try:
+        1. Refresh your GitHub OAuth Apps page
+        2. Check repository settings > Developer settings > OAuth Apps
+        3. Ensure the ChatGPT application is authorized for this repository
+        
+  - type: textarea
+    id: specification
+    attributes:
+      label: Design Specification
+      description: Describe what you want implemented
+      placeholder: |
+        Example:
+        Create a new API endpoint at /api/user/profile that...
+        
+        *** BEGIN PATCH
+        *** ADD FILE: app/api/user/profile/route.ts
+        export async function GET() {
+          return Response.json({ message: "Profile endpoint" });
+        }
+        *** END PATCH
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: oauth-setup
+    attributes:
+      label: OAuth Integration Status
+      description: Confirm ChatGPT OAuth setup status
+      options:
+        - label: ChatGPT appears on OAuth Apps tab
+          required: false
+        - label: Repository authorization is complete
+          required: false
