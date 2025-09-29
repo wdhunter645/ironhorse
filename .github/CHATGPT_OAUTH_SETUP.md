@@ -2,6 +2,36 @@
 
 This repository has been configured to work with ChatGPT through OAuth integration.
 
+## Post-Merge Reinstallation Instructions
+
+**Important**: After merging configuration changes to the ChatGPT Codex Connector setup, you must reinstall the app for changes to take effect.
+
+### Steps to Reinstall After Merge:
+
+1. **Access GitHub Developer Settings**:
+   - Go to [GitHub Settings > Developer settings > GitHub Apps](https://github.com/settings/apps)
+   - Find "ChatGPT Codex Connector" in your apps list
+
+2. **Update App Configuration**:
+   - Click on the app name to open its settings
+   - Review and update the configuration to match the merged changes:
+3. **Reinstall to Repositories**:
+   - Click "Install App" in the left sidebar of the app settings
+   - Select your organization/account
+   - Choose the repositories that need access (including this one)
+   - Complete the installation
+
+4. **Verify Integration**:
+   - Check that ChatGPT appears in GitHub Settings > Applications > Authorized OAuth Apps
+   - Test the integration by creating an issue or using ChatGPT features
+
+### Why Reinstallation is Required:
+
+- GitHub Apps cache configuration settings
+- Permission changes require explicit re-authorization
+- New callback URLs need to be registered with GitHub's OAuth system
+- Public visibility changes affect app discoverability
+
 ## Configuration Files Added
 
 The following files enable ChatGPT to appear on the OAuth Apps tab:
@@ -14,10 +44,43 @@ The following files enable ChatGPT to appear on the OAuth Apps tab:
 
 ## GitHub App Installation Steps
 
+After updating the manifest, you **must reinstall** the ChatGPT Codex Connector:
+
+### Initial Installation
+
 1. **Install GitHub App**: Go to GitHub Settings > Developer settings > GitHub Apps
 2. **Create from Manifest**: Use the manifest in `.github/github-app-manifest.json`
 3. **Install the App**: Install the app to your organization or specific repositories
 4. **Note App Details**: Save the App ID and generate a private key for later use
+
+### Reinstalling After Configuration Updates
+
+**Important**: After merging configuration changes, you must reinstall the app for changes to take effect:
+
+1. **Go to GitHub Developer Settings**:
+   - Navigate to [GitHub Settings](https://github.com/settings/profile)
+   - Click on "Developer settings" in the left sidebar
+   - Select "GitHub Apps"
+
+2. **Find ChatGPT Codex Connector**:
+   - Look for "ChatGPT Codex Connector" in the list
+   - Click on the app name
+
+3. **Update Configuration** (if needed):
+   - Review app settings to ensure they match your requirements
+   - Update permissions, callback URLs, or other settings as needed
+
+4. **Reinstall the App**:
+   - Click "Install App" in the left navigation
+   - Find your organization/account
+   - Click "Configure" next to it
+   - Review repository access settings
+   - Confirm the installation
+
+5. **Verify Installation**:
+   - Go to your repository's Settings > Integrations & services
+   - Confirm "ChatGPT Codex Connector" appears in the list
+   - Check that the app has the correct permissions
 
 ## Environment Variables Setup
 
@@ -69,6 +132,8 @@ vercel link
 ```
 
 ## How to Complete OAuth Setup
+
+**IMPORTANT: After merging configuration changes to main, you MUST reinstall the ChatGPT Codex Connector app using the steps above.**
 
 1. **Check OAuth Apps Tab**: Go to your GitHub Settings > Developer settings > OAuth Apps
 2. **Authorize ChatGPT**: Look for "ChatGPT" or "ChatGPT Codex Connector" in the list
