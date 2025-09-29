@@ -1,0 +1,16 @@
+{
+  "name": "ChatGPT",
+  "description": "ChatGPT OAuth integration for repository access",
+  "homepage_url": "https://chatgpt.com/",
+  "authorization_callback_url": "https://chatgpt.com/auth/callback",
+  "application_url": "https://chatgpt.com/",
+  "public": true,
+  "scopes": [
+    "repo",
+    "read:user", 
+    "user:email",
+    "read:org",
+    "write:discussion",
+    "workflow"
+  ]
+}

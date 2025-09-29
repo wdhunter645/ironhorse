@@ -1,0 +1,34 @@
+{
+  "name": "ChatGPT Codex Connector",
+  "url": "https://chatgpt.com/",
+  "hook_attributes": {
+    "url": "https://chatgpt.com/auth/webhook"
+  },
+  "redirect_url": "https://chatgpt.com/auth/callback",
+  "callback_urls": [
+    "https://chatgpt.com/auth/callback",
+    "https://chatgpt.com/oauth/callback"
+  ],
+  "request_oauth_on_install": true,
+  "setup_on_update": true,
+  "description": "Enables ChatGPT to interact with GitHub repositories for code assistance",
+  "public": false,
+  "default_events": [
+    "issues",
+    "pull_request",
+    "push",
+    "create",
+    "delete",
+    "repository"
+  ],
+  "default_permissions": {
+    "issues": "write",
+    "pull_requests": "write", 
+    "contents": "write",
+    "metadata": "read",
+    "repository_hooks": "read",
+    "statuses": "read",
+    "checks": "read",
+    "actions": "read"
+  }
+}
