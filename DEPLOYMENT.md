@@ -27,13 +27,18 @@ This project has been configured to run all website instances (both development 
 Use the provided script to set all environment variables for production:
 
 ```bash
-# Set environment variables for production environment only
+# Copy GitHub repository secrets to Vercel environment variables for production
 make vercel-env
 ```
 
 Or directly:
 ```bash
 bash scripts/set_vercel_env.sh
+```
+
+**Note**: This script copies GitHub repository secrets to Vercel environment variables. Ensure your repository secrets are set first using:
+```bash
+bash scripts/set_repo_secrets_improved.sh
 ```
 
 ### Repository Secrets
