@@ -1,0 +1,43 @@
+name: Ironhorse Rescue
+on:
+  workflow_dispatch:
+  push:
+    branches: [ feat/homepage-layout-v1 ]
+  pull_request:
+    branches: [ feat/homepage-layout-v1 ]
+
+jobs:
+  rescue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+      - run: npm ci --ignore-scripts
+      - name: Verify env
+        run: node rescue/scripts/verify_env.mjs
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ADMIN_EMAILS: ${{ secrets.ADMIN_EMAILS }}
+          B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
+          B2_APP_KEY: ${{ secrets.B2_APP_KEY }}
+          B2_BUCKET: ${{ secrets.B2_BUCKET }}
+          B2_ENDPOINT: ${{ secrets.B2_ENDPOINT }}
+          PUBLIC_B2_BASE_URL: ${{ secrets.PUBLIC_B2_BASE_URL }}
+      - name: Secret scan
+        run: bash rescue/scripts/secret_scan.sh
+      - name: Audit migrations
+        run: node rescue/scripts/migration_scan.mjs
+      - name: Build
+        run: npm run build --if-present
+      - name: Summary
+        run: node rescue/scripts/summary.mjs
